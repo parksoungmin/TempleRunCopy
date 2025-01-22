@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
-    public int startSpawnNum = 10;
+    public int startSpawnNum = 8;
 
     private Vector3 nextCreatePoint;
 
@@ -40,16 +40,17 @@ public class GameManager : MonoBehaviour
         Transform newTile;
         if (tileCreateCount > 10)
         {
-            int ran = Random.Range(0, 1);
-            if (ran == 0)
+            int ran = Random.Range(0, tiles.Length);
+            newTile = Instantiate(tiles[ran], nextCreatePoint, nextCreateTileRotation);
+            if (ran == 1)
             {
-               // nextCreateTileRotation.y = nextCreateTileRotation.y -90f;
+                nextCreateTileRotation = Quaternion.Euler(0, nextCreateTileRotation.eulerAngles.y - 90f, 0);
             }
             else
             {
-               // nextCreateTileRotation.y = nextCreateTileRotation.y +90f;
+                nextCreateTileRotation = Quaternion.Euler(0, nextCreateTileRotation.eulerAngles.y + 90f, 0);
             }
-            newTile = Instantiate(tiles[ran], nextCreatePoint, nextCreateTileRotation);
+
             tileCreateCount = 0;
 
         }
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
             newTile = Instantiate(tile, nextCreatePoint, nextCreateTileRotation);
         }
 
-        var nextTile = newTile.Find("Tile End Position");
+        var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
         nextCreatePoint = nextTile.position;
         nextCreateTileRotation = nextTile.rotation;
 

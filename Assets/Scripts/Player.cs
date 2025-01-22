@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float playerRotate = 90;
     public float tiltSpeed = 3f;
 
+    public float jumpForce = 5f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,8 +30,19 @@ public class Player : MonoBehaviour
         // 스와이프 방향에 따라 좌/우 이동
         if (MultiTouch.Instance.SwipeDirection.sqrMagnitude != 0f)
         {
-            CheckSwipeRotete();
+            // X축과 Y축 스와이프 방향을 비교
+            if (Mathf.Abs(MultiTouch.Instance.SwipeDirection.x) > Mathf.Abs(MultiTouch.Instance.SwipeDirection.y))
+            {
+                // 좌우 스와이프가 더 클 경우 로테이션
+                CheckSwipeRotete();
+            }
+            else if (MultiTouch.Instance.SwipeDirection.y > 0)
+            {
+                // 위로 스와이프하면 점프
+                CheckSwipeJump();
+            }
         }
+
     }
 
     private void FixedUpdate()
@@ -52,7 +65,7 @@ public class Player : MonoBehaviour
     private void CheckSwipeRotete()
     {
         var dir = (MultiTouch.Instance.SwipeDirection.x < 0) ? Vector3.left : Vector3.right;
-        if(dir == Vector3.left)
+        if (dir == Vector3.left)
         {
             transform.Rotate(0, -playerRotate, 0);
         }
@@ -60,6 +73,12 @@ public class Player : MonoBehaviour
         {
             transform.Rotate(0, playerRotate, 0);
         }
+    }
+    private void CheckSwipeJump()
+    {
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
     }
     private void MoveWithTilt()
     {
