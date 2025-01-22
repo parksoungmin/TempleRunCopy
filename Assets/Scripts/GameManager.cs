@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public Transform tile;
 
+    public Transform[] tiles;
+
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
     public int startSpawnNum = 10;
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private Quaternion nextCreateTileRotation;
 
-    private List<Transform> tileList;
+    private int tileCreateCount = 0;
 
     public void Start()
     {
@@ -29,12 +31,32 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        
+
     }
 
     public void SpawnNextTile()
     {
-        var newTile = Instantiate(tile, nextCreatePoint, nextCreateTileRotation);
+        ++tileCreateCount;
+        Transform newTile;
+        if (tileCreateCount > 10)
+        {
+            int ran = Random.Range(0, 1);
+            if (ran == 0)
+            {
+               // nextCreateTileRotation.y = nextCreateTileRotation.y -90f;
+            }
+            else
+            {
+               // nextCreateTileRotation.y = nextCreateTileRotation.y +90f;
+            }
+            newTile = Instantiate(tiles[ran], nextCreatePoint, nextCreateTileRotation);
+            tileCreateCount = 0;
+
+        }
+        else
+        {
+            newTile = Instantiate(tile, nextCreatePoint, nextCreateTileRotation);
+        }
 
         var nextTile = newTile.Find("Tile End Position");
         nextCreatePoint = nextTile.position;
