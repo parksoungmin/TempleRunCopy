@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8806174759531782784}
   - component: {fileID: 183669267683220707}
   - component: {fileID: 288547303376613660}
+  - component: {fileID: 5753652610089751454}
   m_Layer: 0
   m_Name: Strate Wall
   m_TagString: Untagged
@@ -136,6 +137,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5753652610089751454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3987511206049413048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbfc8a8f4929f24ca11f003a26992ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 2
 --- !u!1 &4067605603189426007
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +414,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483047721697927935}
+  - component: {fileID: 2833281742871909315}
+  - component: {fileID: 1608330251918521725}
   m_Layer: 0
   m_Name: TurnPoint
   m_TagString: Untagged
@@ -422,6 +438,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1206894562907939571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2833281742871909315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453418120886124966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 5, z: 1}
+  m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &1608330251918521725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453418120886124966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e878830ba0d3c643b8f958b36e384ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRotate: -90
 --- !u!1 &8054609451104888938
 GameObject:
   m_ObjectHideFlags: 0

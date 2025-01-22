@@ -10,7 +10,7 @@ public class TileDelete : MonoBehaviour
         if (other.gameObject.GetComponent<Player>())
         {
             // If we did, spawn a new tile 
-            GameObject.FindObjectOfType<GameManager>().SpawnNextTile();
+            GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
 
             // And destroy this entire tile after a short delay 
             Destroy(transform.parent.gameObject, destroyTime);
