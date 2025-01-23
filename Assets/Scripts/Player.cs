@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public bool canLeftSwipe = false;
     public bool canRightSwipe = false;
 
+    //½ºÄÚ¾î
+   
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

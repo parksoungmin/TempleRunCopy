@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TrapPos
   - TrapCenterPos
+  - GameManager
   layers:
   - Default
   - TransparentFX

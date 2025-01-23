@@ -31,11 +31,6 @@ public class TileCreateManager : MonoBehaviour
         }
     }
 
-    public void Update()
-    {
-
-    }
-
     public void SpawnNextTile()
     {
         ++tileCreateCount;
