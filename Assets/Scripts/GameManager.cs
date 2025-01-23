@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        UiManager uiManager = inGameUi.GetComponent<UiManager>();
+        uiManager.DistanceSet();
         gameOver = true;
         player.speed = 0f;
+        player.tiltSpeed = 0f;
     }
 }

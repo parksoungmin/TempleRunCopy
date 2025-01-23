@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     public bool canRightSwipe = false;
 
     //스코어
-   
+    private Vector3 lastPostion;
+    public float totalDistance;
 
     private void Awake()
     {
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     private void Start()
     {
         // 시작 시에는 특정 속도와 방향으로 이동할 수도 있습니다.
+        lastPostion = transform.position;
+        totalDistance = 0f;
     }
 
     private void Update()
@@ -65,6 +68,14 @@ public class Player : MonoBehaviour
 
         }
 
+        //스코어
+        Vector3 delta = transform.position - lastPostion;
+
+        totalDistance += Mathf.Abs(delta.x) + Mathf.Abs(delta.z);
+
+        lastPostion = transform.position;
+
+        Debug.Log(totalDistance);
     }
 
     private void FixedUpdate()
