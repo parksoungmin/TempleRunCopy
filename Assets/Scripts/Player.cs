@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public bool canLeftSwipe = false;
     public bool canRightSwipe = false;
 
+    private bool IsJumping = false;
+
     //스코어
     private Vector3 lastPostion;
     public float totalDistance;
@@ -103,8 +105,11 @@ public class Player : MonoBehaviour
 
     private void CheckSwipeJump()
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (!IsJumping)
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
+
+        IsJumping = true;
     }
     private void MoveWithTilt()
     {
@@ -116,4 +121,14 @@ public class Player : MonoBehaviour
 
         rb.MovePosition(rb.position + moveDirection * Time.deltaTime);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 바닥에 착지한 경우 IsJumping을 false로 설정
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsJumping = false;
+        }
+    }
+
+
 }

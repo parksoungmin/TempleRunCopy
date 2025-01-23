@@ -810,6 +810,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: dbac1b2ae755d464692119648275914a, type: 3}
+    - target: {fileID: 5316820693925015571, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 30d577c953e25f94c865f6a0e4dc7c09, type: 2}
     m_RemovedComponents:
     - {fileID: 8281754945171136082, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
     m_RemovedGameObjects: []
@@ -2204,8 +2208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2366,9 +2370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  swipeMovement: 30
+  swipeMovement: 2
   playerRotate: 90
-  tiltSpeed: 3
+  tiltSpeed: 12
   jumpForce: 5
   swipeTimeAccum: 0
   swipeTimeDelay: 2
@@ -3265,13 +3269,16 @@ MonoBehaviour:
   tiles:
   - {fileID: 1206894562907939571, guid: 3c8a66a7a51cafc409af6216138fe9a8, type: 3}
   - {fileID: 6941497983478609905, guid: d2cbde0054171ac44b39db5b41d89f43, type: 3}
-  trap: {fileID: 3620540187774660867, guid: f72f6cf175f63f049a3ae9ab3603ab79, type: 3}
+  trap:
+  - {fileID: 3620540187774660867, guid: f72f6cf175f63f049a3ae9ab3603ab79, type: 3}
+  - {fileID: 2996171242686248870, guid: 29b051158216d5a4daec74c10f5aca71, type: 3}
   coins:
   - {fileID: 1593023909704028146, guid: 8160e7411847a3e4090bbbbc29ac9d1a, type: 3}
   - {fileID: 6078561216238748214, guid: e26530659b5237f4e9d4eed274d7309e, type: 3}
   - {fileID: 6660646287018008121, guid: ac78fc8aef5c8534b912a02424bb8e00, type: 3}
   - {fileID: 5111011423325865009, guid: c91b514db087f5d4dbec0d519888a758, type: 3}
   createPoint: {x: 0, y: 0, z: -5}
+  midTrapCreatePoint: {x: 0, y: -1, z: 0}
   startSpawnNum: 30
 --- !u!4 &1471594805
 Transform:

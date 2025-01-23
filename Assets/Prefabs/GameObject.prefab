@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1410071405225292351}
   m_Layer: 0
   m_Name: TrapCenterPos
-  m_TagString: TrapCenterPos
+  m_TagString: TrapPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -328,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 7784020493535577829, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302211024088802283, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

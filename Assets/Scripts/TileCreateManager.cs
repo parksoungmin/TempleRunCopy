@@ -8,11 +8,13 @@ public class TileCreateManager : MonoBehaviour
 
     public Transform[] tiles;
 
-    public Transform trap;
+    public Transform[] trap;
 
     public Transform[] coins;
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
+
+    public Vector3 midTrapCreatePoint = new Vector3(0, -0.5f, 0);
 
     public int startSpawnNum = 8;
 
@@ -90,18 +92,35 @@ public class TileCreateManager : MonoBehaviour
                 // 생성 위치 가져오기
                 var spawnPos = spawnPoint.transform.position;
 
+                // 타일의 중심을 기준으로 TrapPos의 상대적인 x 위치를 계산
+                Vector3 tileCenter = newTile.position;
+                float relativeX = spawnPos.x - tileCenter.x;  // 타일 기준으로 TrapPos의 x 위치
+
+                // 장애물 소환 로직 (중앙, 좌측, 우측 구분)
+                Transform trapToSpawn = null;
+
+                if (Mathf.Abs(relativeX) < 1f) // 중앙: 상대 x값이 1 이하 (중앙에 가까운 경우)
+                {
+                    trapToSpawn = trap[1]; // 중앙일 때 trap[1]을 소환
+                }
+                else if (relativeX < 0) // 좌측: 상대 x값이 음수 (왼쪽)
+                {
+                    trapToSpawn = trap[0]; // 좌측일 때 trap[0]을 소환
+                }
+                else // 우측: 상대 x값이 양수 (오른쪽)
+                {
+                    trapToSpawn = trap[0]; // 우측일 때 trap[0]을 소환
+                }
+
                 // 장애물 생성
-                var newObstacle = Instantiate(trap, spawnPos, Quaternion.identity);
+                var newObstacle = Instantiate(trapToSpawn, spawnPos + midTrapCreatePoint, Quaternion.identity);
 
                 // 생성된 장애물을 해당 위치에 부모로 설정
                 newObstacle.SetParent(spawnPoint.transform);
             }
         }
-        else
-        {
-        }
     }
-     void SpawnCoint(Transform newTile)
+    void SpawnCoint(Transform newTile)
     {
         // 장애물 생성할 위치를 저장할 리스트
         var coinSpawnPoints = new List<GameObject>();
@@ -133,9 +152,6 @@ public class TileCreateManager : MonoBehaviour
                 // 생성된 장애물을 해당 위치에 부모로 설정
                 newCoin.SetParent(spawnPoint.transform);
             }
-        }
-        else
-        {
         }
     }
 
