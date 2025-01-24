@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public GameObject scoreUi;
     public GameObject inGameUi;
+    public Enemy enemy;
 
     private float currentGameOverTime = 0f;
     public float gameOverTime = 2f;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         UiManager uiManager = inGameUi.GetComponent<UiManager>();
         uiManager.DistanceSet();
         uiManager.GameOverUISet();
+        enemy.MoveToPlayer(player.transform.position);
         gameOver = true;
         player.speed = 0f;
         player.tiltSpeed = 0f;
