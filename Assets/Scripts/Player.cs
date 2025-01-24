@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckHeight();
-        MoveWithTilt();
+        //MoveWithTilt();
         if (MultiTouch.Instance.SwipeDirection.sqrMagnitude != 0f)
         {
             if (Mathf.Abs(MultiTouch.Instance.SwipeDirection.x) > Mathf.Abs(MultiTouch.Instance.SwipeDirection.y))
@@ -80,9 +81,15 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 forwardMovement = transform.forward * speed * Time.deltaTime;
+        Vector3 forwardMovement = transform.forward * speed;
 
-        rb.MovePosition(rb.position + forwardMovement);
+        var move = forwardMovement + GetMoveDirection();
+
+        Vector3 newPos = new Vector3(forwardMovement.x, 0, GetMoveDirection().z);
+
+        rb.MovePosition(transform.position + move * Time.deltaTime);
+        //rb.velocity = newPos * speed;
+        //rb.AddForce(newPos);
     }
 
     private void CheckHeight()
@@ -118,6 +125,16 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 
         rb.MovePosition(rb.position + moveDirection * Time.deltaTime);
+    }
+    private Vector3 GetMoveDirection()
+    {
+        float tiltInput = Input.acceleration.x;
+
+        Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
+
+        Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
+
+        return moveDirection;
     }
     private void OnCollisionEnter(Collision collision)
     {

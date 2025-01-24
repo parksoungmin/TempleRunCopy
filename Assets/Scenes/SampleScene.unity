@@ -810,6 +810,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23934893143371628, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1231873419245186938, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
       propertyPath: m_Name
       value: Player
@@ -878,6 +882,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 30d577c953e25f94c865f6a0e4dc7c09, type: 2}
+    - target: {fileID: 5316820693925015571, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8281754945171136082, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
     m_RemovedGameObjects: []
@@ -1892,7 +1900,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -2614,10 +2622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c7943375213a84f9372bf2e8d0dc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
   swipeMovement: 2
   playerRotate: 90
-  tiltSpeed: 12
+  tiltSpeed: 8
   jumpForce: 10
   swipeTimeAccum: 0
   swipeTimeDelay: 2
@@ -2649,8 +2657,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Constraints: 122
+  m_CollisionDetection: 2
 --- !u!4 &1147324722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2829148430046862697, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
@@ -2675,8 +2683,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.56, y: 1, z: 0.43}
-  m_Center: {x: 0, y: 0.57, z: -0.07}
+  m_Size: {x: 0.56, y: 1.1218013, z: 0.43}
+  m_Center: {x: 0, y: 0.5090993, z: -0.06999999}
 --- !u!65 &1147324725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2696,8 +2704,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.56, y: 1, z: 0.43}
-  m_Center: {x: 0, y: 0.57, z: -0.07}
+  m_Size: {x: 0.56, y: 1.0914814, z: 0.43}
+  m_Center: {x: 0, y: 0.5242592, z: -0.06999999}
 --- !u!1 &1170093690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,7 +3553,7 @@ MonoBehaviour:
   - {fileID: 6660646287018008121, guid: ac78fc8aef5c8534b912a02424bb8e00, type: 3}
   - {fileID: 5111011423325865009, guid: c91b514db087f5d4dbec0d519888a758, type: 3}
   createPoint: {x: 0, y: 0, z: -5}
-  startSpawnNum: 30
+  startSpawnNum: 15
 --- !u!4 &1471594805
 Transform:
   m_ObjectHideFlags: 0

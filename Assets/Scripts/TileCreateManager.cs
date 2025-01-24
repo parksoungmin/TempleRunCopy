@@ -14,7 +14,7 @@ public class TileCreateManager : MonoBehaviour
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
-    public int startSpawnNum = 8;
+    public int startSpawnNum = 15;
 
     private Vector3 nextCreatePoint;
 
@@ -23,6 +23,8 @@ public class TileCreateManager : MonoBehaviour
     private int tileCreateCount = 0;
 
     private int startTrapDontCreateCount = 9;
+
+    private List<int> TileRotation;
 
     public void Start()
     {
@@ -132,28 +134,21 @@ public class TileCreateManager : MonoBehaviour
         // 타일의 자식 오브젝트들 중 "TrapPos" 태그를 가진 위치를 찾기 (재귀적 탐색)
         FindTrapPos(newTile, coinSpawnPoints);
 
-        // 장애물 생성 위치가 하나 이상 있으면
         if (coinSpawnPoints.Count > 0)
         {
-            // 랜덤으로 트랩이 생성될 확률을 결정 (0 ~ 1 사이)
-            float coinSpawnChance = 0.5f; // 50% 확률로 트랩 생성 (이 값을 조정하여 확률을 바꿀 수 있음)
+            float coinSpawnChance = 0.5f;
 
             // 0과 1 사이의 랜덤 값 생성
             float randomValue = Random.Range(0f, 1f);
 
-            // 랜덤값이 확률보다 작으면 트랩 생성
             if (randomValue <= coinSpawnChance)
             {
-                // 장애물을 생성할 위치를 랜덤으로 선택
                 var spawnPoint = coinSpawnPoints[Random.Range(0, coinSpawnPoints.Count)];
 
-                // 생성 위치 가져오기
                 var spawnPos = spawnPoint.transform.position;
 
-                // 장애물 생성
                 var newCoin = Instantiate(coins[Random.Range(0, coins.Length)], spawnPos, nextCreateTileRotation);
 
-                // 생성된 장애물을 해당 위치에 부모로 설정
                 newCoin.SetParent(spawnPoint.transform);
             }
         }
