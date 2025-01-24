@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     {
         UiManager uiManager = inGameUi.GetComponent<UiManager>();
         uiManager.DistanceSet();
+        uiManager.GameOverUISet();
         gameOver = true;
         player.speed = 0f;
         player.tiltSpeed = 0f;

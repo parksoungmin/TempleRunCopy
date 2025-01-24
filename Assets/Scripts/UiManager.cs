@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 public class UiManager : MonoBehaviour
 {
     public Player player;
-    public TextMeshProUGUI inGameScoreText;
     public TextMeshProUGUI gameOverDistanceText;
-    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI gameOverScoreText;
+    public TextMeshProUGUI gameOverCoinText;
+    public TextMeshProUGUI inGameScoreText;
+    public TextMeshProUGUI inGameCoinText;
 
+    public int score = 0;
     public int coin = 0;
     public void OnButtonClickGameReStart()
     {
@@ -18,7 +21,7 @@ public class UiManager : MonoBehaviour
     }
     private void Update()
     {
-        var score = Mathf.RoundToInt(player.totalDistance * 10f);
+        score = Mathf.RoundToInt(player.totalDistance * 10f);
         inGameScoreText.text = $"{score}M";
     }
     public void DistanceSet()
@@ -29,6 +32,11 @@ public class UiManager : MonoBehaviour
     public void AddCoin(int coin)
     {
         this.coin += coin;
-        coinText.text = $"{this.coin}";
+        inGameCoinText.text = $"{this.coin}";
+    }
+    public void GameOverUISet()
+    {
+        gameOverCoinText.text = $"Coin              {coin}";
+        gameOverScoreText.text = $"{score}";
     }
 }

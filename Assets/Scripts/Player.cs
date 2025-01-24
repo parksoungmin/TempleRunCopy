@@ -76,8 +76,6 @@ public class Player : MonoBehaviour
         totalDistance += Mathf.Abs(delta.x) + Mathf.Abs(delta.z);
 
         lastPostion = transform.position;
-
-        Debug.Log(totalDistance);
     }
 
     private void FixedUpdate()

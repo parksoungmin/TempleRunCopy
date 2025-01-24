@@ -14,8 +14,6 @@ public class TileCreateManager : MonoBehaviour
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
-    public Vector3 midTrapCreatePoint = new Vector3(0, -0.5f, 0);
-
     public int startSpawnNum = 8;
 
     private Vector3 nextCreatePoint;
@@ -23,6 +21,8 @@ public class TileCreateManager : MonoBehaviour
     private Quaternion nextCreateTileRotation;
 
     private int tileCreateCount = 0;
+
+    private int startTrapDontCreateCount = 9;
 
     public void Start()
     {
@@ -59,8 +59,12 @@ public class TileCreateManager : MonoBehaviour
         {
             newTile = Instantiate(tile, nextCreatePoint, nextCreateTileRotation);
         }
-        SpawnObstacle(newTile);
-        SpawnCoint(newTile);
+        if (startTrapDontCreateCount < tileCreateCount)
+        {
+            startTrapDontCreateCount = 0;
+            SpawnObstacle(newTile);
+            SpawnCoint(newTile);
+        }
         var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
         nextCreatePoint = nextTile.position;
         nextCreateTileRotation = nextTile.rotation;
@@ -113,7 +117,7 @@ public class TileCreateManager : MonoBehaviour
                 }
 
                 // 장애물 생성
-                var newObstacle = Instantiate(trapToSpawn, spawnPos + midTrapCreatePoint, Quaternion.identity);
+                var newObstacle = Instantiate(trapToSpawn, spawnPos, Quaternion.identity);
 
                 // 생성된 장애물을 해당 위치에 부모로 설정
                 newObstacle.SetParent(spawnPoint.transform);
@@ -148,7 +152,7 @@ public class TileCreateManager : MonoBehaviour
 
                 // 장애물 생성
                 var newCoin = Instantiate(coins[Random.Range(0, coins.Length)], spawnPos, nextCreateTileRotation);
-              
+
                 // 생성된 장애물을 해당 위치에 부모로 설정
                 newCoin.SetParent(spawnPoint.transform);
             }
