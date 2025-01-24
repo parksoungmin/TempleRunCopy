@@ -2529,7 +2529,7 @@ MonoBehaviour:
   swipeMovement: 2
   playerRotate: 90
   tiltSpeed: 12
-  jumpForce: 7
+  jumpForce: 10
   swipeTimeAccum: 0
   swipeTimeDelay: 2
   canLeftSwipe: 0
@@ -2543,7 +2543,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147324718}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -3448,7 +3448,8 @@ MonoBehaviour:
   - {fileID: 6941497983478609905, guid: d2cbde0054171ac44b39db5b41d89f43, type: 3}
   trap:
   - {fileID: 3620540187774660867, guid: f72f6cf175f63f049a3ae9ab3603ab79, type: 3}
-  - {fileID: 2996171242686248870, guid: 29b051158216d5a4daec74c10f5aca71, type: 3}
+  - {fileID: 989877093191836374, guid: 29b051158216d5a4daec74c10f5aca71, type: 3}
+  - {fileID: 4296532117685722656, guid: a737c17e2e6362746be1c7ec44e4d3ef, type: 3}
   coins:
   - {fileID: 1593023909704028146, guid: 8160e7411847a3e4090bbbbc29ac9d1a, type: 3}
   - {fileID: 6078561216238748214, guid: e26530659b5237f4e9d4eed274d7309e, type: 3}

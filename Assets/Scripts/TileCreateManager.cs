@@ -105,7 +105,7 @@ public class TileCreateManager : MonoBehaviour
 
                 if (Mathf.Abs(relativeX) < 1f) // 중앙: 상대 x값이 1 이하 (중앙에 가까운 경우)
                 {
-                    trapToSpawn = trap[1]; // 중앙일 때 trap[1]을 소환
+                    trapToSpawn = trap[Random.Range(1,trap.Length)]; // 중앙일 때 trap[1]을 소환
                 }
                 else if (relativeX < 0) // 좌측: 상대 x값이 음수 (왼쪽)
                 {
