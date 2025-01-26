@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float playerRotate = 90;
     public float tiltSpeed = 3f;
 
+
     public float jumpForce = 5f;
 
     public float swipeTimeAccum = 0f;
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour
     private Vector3 lastPostion;
     public float totalDistance;
 
+    public Magnet magnet;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,7 +36,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        // 시작 시에는 특정 속도와 방향으로 이동할 수도 있습니다.
         lastPostion = transform.position;
         totalDistance = 0f;
     }
@@ -88,8 +90,6 @@ public class Player : MonoBehaviour
         Vector3 newPos = new Vector3(forwardMovement.x, 0, GetMoveDirection().z);
 
         rb.MovePosition(transform.position + move * Time.deltaTime);
-        //rb.velocity = newPos * speed;
-        //rb.AddForce(newPos);
     }
 
     private void CheckHeight()
