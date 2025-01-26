@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public float totalDistance;
 
     public Magnet magnet;
+    public Protect protect;
 
     private void Awake()
     {
@@ -138,12 +139,9 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        // 바닥에 착지한 경우 IsJumping을 false로 설정
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsJumping = false;
         }
     }
-
-
 }

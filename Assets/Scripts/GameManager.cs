@@ -33,12 +33,19 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        UiManager uiManager = inGameUi.GetComponent<UiManager>();
-        uiManager.DistanceSet();
-        uiManager.GameOverUISet();
-        enemy.MoveToPlayer(player.transform.position);
-        gameOver = true;
-        player.speed = 0f;
-        player.tiltSpeed = 0f;
+        if (player.protect.gameObject.activeSelf)
+        {
+            player.protect.DestroyProtect();
+        }
+        else
+        {
+            UiManager uiManager = inGameUi.GetComponent<UiManager>();
+            uiManager.DistanceSet();
+            uiManager.GameOverUISet();
+            enemy.MoveToPlayer(player.transform.position);
+            gameOver = true;
+            player.speed = 0f;
+            player.tiltSpeed = 0f;
+        }
     }
 }
