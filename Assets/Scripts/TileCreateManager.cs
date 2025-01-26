@@ -55,7 +55,6 @@ public class TileCreateManager : MonoBehaviour
             }
 
             tileCreateCount = 0;
-
         }
         else
         {
@@ -70,58 +69,44 @@ public class TileCreateManager : MonoBehaviour
         var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
         nextCreatePoint = nextTile.position;
         nextCreateTileRotation = nextTile.rotation;
-
     }
     void SpawnObstacle(Transform newTile)
     {
-        // 장애물 생성할 위치를 저장할 리스트
         var obstacleSpawnPoints = new List<GameObject>();
 
-        // 타일의 자식 오브젝트들 중 "TrapPos" 태그를 가진 위치를 찾기 (재귀적 탐색)
         FindTrapPos(newTile, obstacleSpawnPoints);
 
-        // 장애물 생성 위치가 하나 이상 있으면
         if (obstacleSpawnPoints.Count > 0)
         {
-            // 랜덤으로 트랩이 생성될 확률을 결정 (0 ~ 1 사이)
-            float trapSpawnChance = 0.5f; // 50% 확률로 트랩 생성 (이 값을 조정하여 확률을 바꿀 수 있음)
+            float trapSpawnChance = 0.5f;
 
-            // 0과 1 사이의 랜덤 값 생성
             float randomValue = Random.Range(0f, 1f);
 
-            // 랜덤값이 확률보다 작으면 트랩 생성
             if (randomValue <= trapSpawnChance)
             {
-                // 장애물을 생성할 위치를 랜덤으로 선택
                 var spawnPoint = obstacleSpawnPoints[Random.Range(0, obstacleSpawnPoints.Count)];
 
-                // 생성 위치 가져오기
                 var spawnPos = spawnPoint.transform.position;
 
-                // 타일의 중심을 기준으로 TrapPos의 상대적인 x 위치를 계산
                 Vector3 tileCenter = newTile.position;
-                float relativeX = spawnPos.x - tileCenter.x;  // 타일 기준으로 TrapPos의 x 위치
+                float relativeX = spawnPos.x - tileCenter.x;
 
-                // 장애물 소환 로직 (중앙, 좌측, 우측 구분)
                 Transform trapToSpawn = null;
 
-                if (Mathf.Abs(relativeX) < 1f) // 중앙: 상대 x값이 1 이하 (중앙에 가까운 경우)
+                if (Mathf.Abs(relativeX) < 1f)
                 {
-                    trapToSpawn = trap[Random.Range(1,trap.Length)]; // 중앙일 때 trap[1]을 소환
+                    trapToSpawn = trap[Random.Range(1,trap.Length)];
                 }
-                else if (relativeX < 0) // 좌측: 상대 x값이 음수 (왼쪽)
+                else if (relativeX < 0)
                 {
-                    trapToSpawn = trap[0]; // 좌측일 때 trap[0]을 소환
+                    trapToSpawn = trap[0];
                 }
-                else // 우측: 상대 x값이 양수 (오른쪽)
+                else
                 {
-                    trapToSpawn = trap[0]; // 우측일 때 trap[0]을 소환
+                    trapToSpawn = trap[0];
                 }
-
-                // 장애물 생성
                 var newObstacle = Instantiate(trapToSpawn, spawnPos, Quaternion.identity);
 
-                // 생성된 장애물을 해당 위치에 부모로 설정
                 newObstacle.SetParent(spawnPoint.transform);
             }
         }
