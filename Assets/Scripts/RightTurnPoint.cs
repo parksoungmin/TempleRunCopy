@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnPoint : MonoBehaviour
+public class RightTurnPoint : MonoBehaviour
 {
     public float playerRotate = 90f;
 
@@ -12,19 +12,12 @@ public class TurnPoint : MonoBehaviour
         {
             var player = other.GetComponent<Player>();
 
-            if (player.canRightSwipe)
+            if (player.canRightSwipe||player.invincibility.gameObject.activeSelf)
             {
                 player.transform.Rotate(0, playerRotate, 0);
                 player.canRightSwipe = false;
+                Debug.Log("Ãæµ¹");
             }
-            else if (player.canLeftSwipe)
-            {
-                player.transform.Rotate(0, playerRotate, 0);
-                player.canLeftSwipe = false;
-            }
-        }
-        else
-        {
         }
     }
 }

@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
         {
             player.protect.DestroyProtect();
         }
+        else if(player.invincibility.gameObject.activeSelf)
+        {
+
+        }
         else
         {
             UiManager uiManager = inGameUi.GetComponent<UiManager>();

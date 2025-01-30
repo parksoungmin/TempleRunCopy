@@ -44,6 +44,15 @@ public static class DataTableManager
             return Get<StringTable>(DataTableIds.String[(int)Varibalbes.currentLanguage]);
         }
     }
+    
+
+    public static UpGradeDataTable UpGradeDataTable
+    {
+        get
+        {
+            return Get<UpGradeDataTable>(UpGradeDataTableIds.String[(int)Varibalbes.currentLanguage]);
+        }
+    }
 
     public static ItemTable ItemTable
     {

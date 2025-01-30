@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 3987511206049413048}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 4.7}
+  m_LocalPosition: {x: 0, y: 1, z: 4.5}
   m_LocalScale: {x: 7, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -416,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483047721697927935}
   - component: {fileID: 2833281742871909315}
-  - component: {fileID: 1608330251918521725}
+  - component: {fileID: 8646864682084586558}
   m_Layer: 0
   m_Name: TurnPoint
   m_TagString: Untagged
@@ -460,7 +460,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7, y: 5, z: 1}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &1608330251918521725
+--- !u!114 &8646864682084586558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

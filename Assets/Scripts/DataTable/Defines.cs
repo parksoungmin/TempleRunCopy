@@ -27,6 +27,14 @@ public static class ItemTableIds
     };
 }
 
+public static class UpGradeDataTableIds
+{
+    public static readonly string[] String =
+    {
+        "UpGradeDataTable",
+    };
+}
+
 public static class Varibalbes
 {
     public static Languages currentLanguage = Languages.Korea;

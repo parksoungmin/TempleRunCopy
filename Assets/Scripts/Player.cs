@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     public Magnet magnet;
     public Protect protect;
+    public Invincibility invincibility;
 
     private void Awake()
     {
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        CheckHeight();
+        //CheckHeight();
         //MoveWithTilt();
         if (MultiTouch.Instance.SwipeDirection.sqrMagnitude != 0f)
         {
@@ -84,6 +85,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
         Vector3 forwardMovement = transform.forward * speed;
 
         var move = forwardMovement + GetMoveDirection();
@@ -112,8 +117,10 @@ public class Player : MonoBehaviour
     private void CheckSwipeJump()
     {
         if (!IsJumping)
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        {
 
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
 
         IsJumping = true;
     }
@@ -129,8 +136,11 @@ public class Player : MonoBehaviour
     }
     private Vector3 GetMoveDirection()
     {
+#if UNITY_EDITOR
+        float tiltInput = Input.GetAxis("Horizontal");
+#elif UNITY_ANDROID || UNITY_IOS
         float tiltInput = Input.acceleration.x;
-
+#endif
         Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
 
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
