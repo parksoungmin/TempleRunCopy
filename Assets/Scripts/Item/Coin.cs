@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
     private Player player;
     public float magnetSpeed = 10f;
     private bool startMagnet = false;
+    private bool isCollected = false;  // 코인이 이미 먹혔는지 여부
 
     private void Start()
     {
@@ -14,24 +15,31 @@ public class Coin : MonoBehaviour
         uiManager = FindObjectOfType<UiManager>();
         player = FindObjectOfType<Player>();
     }
+
     private void Update()
     {
         transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
-        if (startMagnet)
+
+        // 마그넷이 작동 중일 때만 이동
+        if (startMagnet && !isCollected)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, magnetSpeed * Time.deltaTime);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Player>())
+        // Player와 충돌했을 때만 처리
+        if (other.gameObject.GetComponent<Player>() && !isCollected)
         {
-            Destroy(gameObject);
-            uiManager.AddCoin(1);
+            isCollected = true;  // 중복 수집 방지
+            Destroy(gameObject);  // 코인 제거
+            uiManager.AddCoin(1);  // UI 업데이트
         }
     }
+
     public void GetMagnet()
     {
-        startMagnet = true;
+        startMagnet = true;  // 마그넷 효과 활성화
     }
 }

@@ -92,10 +92,7 @@ public class Player : MonoBehaviour
         Vector3 forwardMovement = transform.forward * speed;
 
         var move = forwardMovement + GetMoveDirection();
-
-        Vector3 newPos = new Vector3(forwardMovement.x, 0, GetMoveDirection().z);
-
-        rb.MovePosition(transform.position + move * Time.deltaTime);
+        rb.MovePosition(rb.position + move * Time.deltaTime);
     }
 
     private void CheckHeight()
@@ -118,7 +115,6 @@ public class Player : MonoBehaviour
     {
         if (!IsJumping)
         {
-
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
