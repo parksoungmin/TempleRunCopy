@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rb;
 
-    public float speed = 6f;  // 걷는 속도
+    public float speed = 10f;  // 걷는 속도
     public float swipeMovement = 2f;  // 좌우 스와이프 속도
     public float playerRotate = 90;
     public float tiltSpeed = 3f;
@@ -26,10 +26,17 @@ public class Player : MonoBehaviour
     //스코어
     private Vector3 lastPostion;
     public float totalDistance;
+    public float speedUpDistance = 500f;
+    private float speedDistance = 0f;
 
     public Magnet magnet;
     public Protect protect;
     public Invincibility invincibility;
+    public CoinDouble coinDouble;
+
+    private int speedUPCount = 0;
+    public int speedUpMaxCount = 10;
+    public float plus = 1.5f;
 
     private void Awake()
     {
@@ -77,9 +84,12 @@ public class Player : MonoBehaviour
 
         //스코어
         Vector3 delta = transform.position - lastPostion;
-
-        totalDistance += Mathf.Abs(delta.x) + Mathf.Abs(delta.z);
-
+        delta.y = 0f;
+        //Mathf.Abs(delta.x) + Mathf.Abs(delta.z);
+        var deltaMagnitude = delta.magnitude;
+        totalDistance += deltaMagnitude;
+        speedDistance += deltaMagnitude;
+        SpeedUP();
         lastPostion = transform.position;
     }
 
@@ -148,6 +158,15 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsJumping = false;
+        }
+    }
+    private void SpeedUP()
+    {
+        if (speedDistance > speedUpDistance && speedUPCount < speedUpMaxCount)
+        {
+            speedUPCount++;
+            speedDistance = 0f;
+            speed += plus;
         }
     }
 }

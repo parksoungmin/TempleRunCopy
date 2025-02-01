@@ -29,12 +29,19 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Player와 충돌했을 때만 처리
-        if (other.gameObject.GetComponent<Player>() && !isCollected)
+        var player2 = other.gameObject.GetComponent<Player>();
+        if (player2 && !isCollected)
         {
             isCollected = true;  // 중복 수집 방지
             Destroy(gameObject);  // 코인 제거
-            uiManager.AddCoin(1);  // UI 업데이트
+            if (player.coinDouble.gameObject.activeSelf)
+            {
+                uiManager.AddCoin(2);
+            }
+            else
+            {
+                uiManager.AddCoin(1);  // UI 업데이트
+            }
         }
     }
 
