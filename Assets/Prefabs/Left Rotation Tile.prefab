@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3851493259650688789}
   - component: {fileID: 924563776808472361}
-  - component: {fileID: 8035901079001035102}
+  - component: {fileID: 8131117813659672944}
   m_Layer: 0
   m_Name: Delete Tile
   m_TagString: Untagged
@@ -205,7 +205,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8035901079001035102
+--- !u!114 &8131117813659672944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4067605603189426007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae5e8fa466d64540a4ecc159627933b, type: 3}
+  m_Script: {fileID: 11500000, guid: f8a59a32f05e63547b656d7e634887e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4169195164307870076

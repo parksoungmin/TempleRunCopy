@@ -12,6 +12,7 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI gameOverCoinText;
     public TextMeshProUGUI inGameScoreText;
     public TextMeshProUGUI inGameCoinText;
+    public GameObject upgradeUi;
 
     public int score = 0;
     public int coin = 0;
@@ -38,5 +39,9 @@ public class UiManager : MonoBehaviour
     {
         gameOverCoinText.text = $"Coin              {coin}";
         gameOverScoreText.text = $"{score}";
+    }
+    public void UpgradeUiOn()
+    {
+        upgradeUi.SetActive(true);
     }
 }

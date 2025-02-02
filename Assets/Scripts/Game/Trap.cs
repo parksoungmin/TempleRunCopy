@@ -6,6 +6,7 @@ public class Trap : MonoBehaviour
 {
     public float waitTime = 2.0f;
     public GameManager gameManager;
+    private bool dead = false;
 
     private void Awake()
     {
@@ -16,7 +17,11 @@ public class Trap : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            gameManager.GameOver();
+            if(!dead)
+            {
+                gameManager.GameOver();
+                dead = true;
+            }
         }
     }
 }

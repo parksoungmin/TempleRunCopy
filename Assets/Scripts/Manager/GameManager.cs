@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
             currentGameOverTime += Time.deltaTime;
             if (currentGameOverTime > gameOverTime)
             {
+                gameOver = false;
                 currentGameOverTime = 0f;
                 scoreUi.SetActive(true);
                 inGameUi.SetActive(false);
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             player.protect.DestroyProtect();
         }
-        else if(player.invincibility.gameObject.activeSelf)
+        else if (player.invincibility.gameObject.activeSelf)
         {
 
         }

@@ -13,7 +13,7 @@ public class TileCreateManager : MonoBehaviour
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
-    public int startSpawnNum = 15;
+    public int startSpawnNum = 25;
     private Vector3 nextCreatePoint;
     private Quaternion nextCreateTileRotation;
     private int tileCreateCount = 0;

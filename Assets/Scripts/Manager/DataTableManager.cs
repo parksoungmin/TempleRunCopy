@@ -8,7 +8,7 @@ public static class DataTableManager
     static DataTableManager()
     {
 
-#if UNITY_EDITOR
+#if !UNITY_EDITOR
         //foreach(var id in DataTableIds.String)
         //{ 
         //    var table = new StringTable();
@@ -23,16 +23,22 @@ public static class DataTableManager
         //    tables.Add(id, table);
         //}
 #else
-        var table = new StringTable();
-        var stringTableId = DataTableIds.String[(int)Varibalbes.currentLanguage];
-        table.Load(stringTableId);
-        tables.Add(stringTableId, table);
+        //var table = new StringTable();
+        //var stringTableId = DataTableIds.String[(int)Varibalbes.currentLanguage];
+        //table.Load(stringTableId);
+        //tables.Add(stringTableId, table);
 
-          foreach (var id in ItemTableIds.String)
+        //foreach (var id in ItemTableIds.String)
+        //{
+        //    var itemTable = new ItemTable();
+        //    itemTable.Load(id);
+        //    tables.Add(id, itemTable);
+        //}
+        foreach (var id in UpGradeDataTableIds.String)
         {
-            var table = new ItemTable();
-            table.Load(id);
-            tables.Add(id, table);
+            var upgradeTable = new UpGradeDataTable();
+            upgradeTable.Load(id);
+            tables.Add(id, upgradeTable);
         }
 #endif
     }
@@ -50,7 +56,7 @@ public static class DataTableManager
     {
         get
         {
-            return Get<UpGradeDataTable>(UpGradeDataTableIds.String[(int)Varibalbes.currentLanguage]);
+            return Get<UpGradeDataTable>(UpGradeDataTableIds.String[0]);
         }
     }
 

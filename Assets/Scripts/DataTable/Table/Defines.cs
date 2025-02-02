@@ -26,6 +26,10 @@ public static class ItemTableIds
         "ItemTable",
     };
 }
+public static class PathFormat
+{
+    public static readonly string DataTables = "DataTables/{0}";
+}
 
 public static class UpGradeDataTableIds
 {

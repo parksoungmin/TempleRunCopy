@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         //CheckHeight();
-        //MoveWithTilt();
+        //MoveWithTilt(); 
         if (MultiTouch.Instance.SwipeDirection.sqrMagnitude != 0f)
         {
             if (Mathf.Abs(MultiTouch.Instance.SwipeDirection.x) > Mathf.Abs(MultiTouch.Instance.SwipeDirection.y))

@@ -6,17 +6,19 @@ public class UpGradeDataTable : DataTable
 {
     public class UpGradeData
     {
-        public string Id { get; set; }
-        public int Time{ get; set; }
-        public UpGradeType Type { get; set; }
-        public int UpGradePoint { get; set; }
+        public string Index {  get; set; }
+        public int ID { get; set; }
+        public string Item_Name { get; set; }
+        public int Level { get; set; }
+        public int Item_Effect { get; set; }
+        public int Cost_Value { get; set; }
     }
 
-    private Dictionary<UpGradeType, UpGradeData> dictionoary = new Dictionary<UpGradeType, UpGradeData>();
+    private Dictionary<int, UpGradeData> dictionoary = new Dictionary<int, UpGradeData>();
 
     public override void Load(string filename)
     {
-        var path = string.Format(FormatPath, filename);
+        var path = string.Format(PathFormat.DataTables, filename);
 
         var textAsset = Resources.Load<TextAsset>(path);
         var list = LoadCSV<UpGradeData>(textAsset.text);
@@ -25,18 +27,18 @@ public class UpGradeDataTable : DataTable
 
         foreach (var item in list)
         {
-            if (!dictionoary.ContainsKey(item.Type))
+            if (!dictionoary.ContainsKey(item.ID))
             {
-                dictionoary.Add(item.Type, item);
+                dictionoary.Add(item.ID, item);
             }
             else
             {
-                Debug.LogError($"Key Duplicated {item.Id}");
+                Debug.LogError($"Key Duplicated {item.Item_Name}");
             }
         }
     }
 
-    public UpGradeData Get(UpGradeType key)
+    public UpGradeData Get(int key)
     {
         if (!dictionoary.ContainsKey(key))
         {
