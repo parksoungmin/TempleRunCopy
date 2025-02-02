@@ -12,12 +12,12 @@ public class Invincibility : MonoBehaviour
     }
     private void Update()
     {
-        //currentTime += Time.deltaTime;
-        //if (time < currentTime)
-        //{
-        //    currentTime = 0;
-        //    gameObject.SetActive(false);
-        //}
+        currentTime += Time.deltaTime;
+        if (time < currentTime)
+        {
+            currentTime = 0;
+            gameObject.SetActive(false);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

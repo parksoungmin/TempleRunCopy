@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public bool canRightSwipe = false;
 
     private bool IsJumping = false;
+    private bool UnityJump = false;
 
     //½ºÄÚ¾î
     private Vector3 lastPostion;
@@ -105,12 +106,17 @@ public class Player : MonoBehaviour
         speedDistance += deltaMagnitude;
         SpeedUP();
         lastPostion = transform.position;
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !IsJumping)
+        {
+            UnityJump = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)&&!IsJumping)
+        if (UnityJump)
         {
+            UnityJump = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsJumping = true;
         }
