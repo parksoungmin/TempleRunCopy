@@ -5,7 +5,7 @@ public class Coin : MonoBehaviour
     public float rotationSpeed;  // 회전 속도 (초당 몇 도 회전할지 설정)
     public UiManager uiManager;
     private Player player;
-    public float magnetSpeed = 10f;
+    private float magnetSpeed = 20f;
     private bool startMagnet = false;
     private bool isCollected = false;  // 코인이 이미 먹혔는지 여부
 
@@ -20,7 +20,6 @@ public class Coin : MonoBehaviour
     {
         transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
 
-        // 마그넷이 작동 중일 때만 이동
         if (startMagnet && !isCollected)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, magnetSpeed * Time.deltaTime);

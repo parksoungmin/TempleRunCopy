@@ -14602,7 +14602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: speedUpMaxCount
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 624009479098179719, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_LocalPosition.x
