@@ -14578,7 +14578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: speed
-      value: 15
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: jumpForce
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: tiltSpeed
@@ -14589,8 +14593,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 396557155}
     - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: canRightSwipe
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: speedUpDistance
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 247894806643376089, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: speedUpMaxCount
@@ -14638,7 +14646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666462906391694545, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1864942432006995534, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: gameManager

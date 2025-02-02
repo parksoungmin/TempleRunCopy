@@ -53,6 +53,20 @@ public class Player : MonoBehaviour
     {
         //CheckHeight();
         //MoveWithTilt(); 
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            swipeTimeAccum = 0;
+            canLeftSwipe = true;
+            canRightSwipe = false;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            swipeTimeAccum = 0;
+            canRightSwipe = true;
+            canLeftSwipe = false;
+        }
+#elif UNITY_ANDROID || UNITY_IOS
         if (MultiTouch.Instance.SwipeDirection.sqrMagnitude != 0f)
         {
             if (Mathf.Abs(MultiTouch.Instance.SwipeDirection.x) > Mathf.Abs(MultiTouch.Instance.SwipeDirection.y))
@@ -64,6 +78,7 @@ public class Player : MonoBehaviour
                 CheckSwipeJump();
             }
         }
+#endif
         if (canLeftSwipe)
         {
             swipeTimeAccum += Time.deltaTime;
@@ -77,9 +92,8 @@ public class Player : MonoBehaviour
             swipeTimeAccum += Time.deltaTime;
             if (swipeTimeAccum >= swipeTimeDelay)
             {
-                canLeftSwipe = false;
+                canRightSwipe = false;
             }
-
         }
 
         //½ºÄÚ¾î
@@ -95,9 +109,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow)&&!IsJumping)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            IsJumping = true;
         }
         Vector3 forwardMovement = transform.forward * speed;
 

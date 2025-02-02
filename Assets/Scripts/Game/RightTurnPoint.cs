@@ -13,10 +13,10 @@ public class RightTurnPoint : MonoBehaviour
         if (other.CompareTag("Player") && !hasCollided)
         {
             var player = other.GetComponent<Player>();
-            if (player.canLeftSwipe || player.invincibility.gameObject.activeSelf)
+            if (player.canRightSwipe || player.invincibility.gameObject.activeSelf)
             {
                 player.transform.Rotate(0, playerRotate, 0);
-                player.canLeftSwipe = false;
+                player.canRightSwipe = false;
                 Debug.Log("충돌 (트리거)");
                 hasCollided = true; // 충돌을 한 번만 처리
             }
@@ -28,10 +28,10 @@ public class RightTurnPoint : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             var player = collision.collider.GetComponent<Player>();
-            if (player.canLeftSwipe || player.invincibility.gameObject.activeSelf)
+            if (player.canRightSwipe || player.invincibility.gameObject.activeSelf)
             {
                 player.transform.Rotate(0, playerRotate, 0);
-                player.canLeftSwipe = false;
+                player.canRightSwipe = false;
                 Debug.Log("충돌 (물리적)");
             }
         }
