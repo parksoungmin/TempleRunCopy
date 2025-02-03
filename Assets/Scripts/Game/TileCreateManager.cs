@@ -28,6 +28,8 @@ public class TileCreateManager : MonoBehaviour
 
     private int safeArray = 2;
 
+    private int randomTrapIndex;
+
     public void Start()
     {
         nextCreatePoint = createPoint;
@@ -112,16 +114,19 @@ public class TileCreateManager : MonoBehaviour
 
                 Transform trapToSpawn = null;
 
-                if (Mathf.Abs(relativeX) < 1f)
+                if (Mathf.Abs(relativeX) < 1f && randomTrapIndex == 0)
                 {
-                    trapToSpawn = trap[Random.Range(1, trap.Length)];
+                    randomTrapIndex = Random.Range(1, trap.Length);
+                    trapToSpawn = trap[randomTrapIndex];
                 }
                 else if (relativeX < 0)
                 {
+                    randomTrapIndex = 0;
                     trapToSpawn = trap[0];
                 }
                 else
                 {
+                    randomTrapIndex = 0;
                     trapToSpawn = trap[0];
                 }
                 var newObstacle = Instantiate(trapToSpawn, spawnPos, Quaternion.identity);
