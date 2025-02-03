@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = -1;
         scoreUi.SetActive(false);
         inGameUi.SetActive(true);
     }

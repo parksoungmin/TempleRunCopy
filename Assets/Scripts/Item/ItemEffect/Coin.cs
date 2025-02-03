@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public float rotationSpeed;  // 회전 속도 (초당 몇 도 회전할지 설정)
+    public float rotationSpeed;
     public UiManager uiManager;
     private Player player;
     private float magnetSpeed = 20f;
     private bool startMagnet = false;
-    private bool isCollected = false;  // 코인이 이미 먹혔는지 여부
+    private bool isCollected = false;
 
     private void Start()
     {
@@ -31,21 +31,20 @@ public class Coin : MonoBehaviour
         var player2 = other.gameObject.GetComponent<Player>();
         if (player2 && !isCollected)
         {
-            isCollected = true;  // 중복 수집 방지
-            Destroy(gameObject);  // 코인 제거
+            isCollected = true;
+            Destroy(gameObject);
             if (player.coinDouble.gameObject.activeSelf)
             {
                 uiManager.AddCoin(2);
             }
             else
             {
-                uiManager.AddCoin(1);  // UI 업데이트
+                uiManager.AddCoin(1);
             }
         }
     }
-
     public void GetMagnet()
     {
-        startMagnet = true;  // 마그넷 효과 활성화
+        startMagnet = true;
     }
 }

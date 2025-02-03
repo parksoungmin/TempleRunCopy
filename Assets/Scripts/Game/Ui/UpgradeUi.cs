@@ -19,8 +19,8 @@ public class UpgradeUi : MonoBehaviour
     public TextMeshProUGUI coinDoubleCostText;
     public TextMeshProUGUI invincibilityCostText;
 
-    private string magnet;
-    private string protect;
+    private string magnetString;
+    private string protectString;
     private string coinDouble;
     private string invincibility;
 
@@ -35,6 +35,11 @@ public class UpgradeUi : MonoBehaviour
     private int invincibilityMaxId = 4005;
 
     int coin = 0;
+
+    //public CoinDouble coinDouble;
+    //public Invincibility invincibility;
+    //public Protect protect;
+    //public Magnet magnet;
 
     private void Start()
     {
@@ -75,15 +80,15 @@ public class UpgradeUi : MonoBehaviour
     }
     private void UpdateUpgrade()
     {
-        magnet = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Name;
+        magnetString = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Name;
         invincibility = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Name;
         coinDouble = DataTableManager.UpGradeDataTable.Get(coinDoubleId).Item_Name;
-        protect = DataTableManager.UpGradeDataTable.Get(protectId).Item_Name;
+        protectString = DataTableManager.UpGradeDataTable.Get(protectId).Item_Name;
 
-        magnetText.text = magnet;
+        magnetText.text = magnetString;
         invincibilityText.text = invincibility;
         coinDoubleText.text = coinDouble;
-        protectText.text = protect;
+        protectText.text = protectString;
 
         magnetCostText.text = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value.ToString();
         protectCostText.text = DataTableManager.UpGradeDataTable.Get(protectId).Cost_Value.ToString();
