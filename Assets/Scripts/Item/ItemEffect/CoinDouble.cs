@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinDouble : MonoBehaviour
 {
-    private float time = 10f;
+    public float time = 10f;
     private float currentTime = 0f;
 
     private void Update()

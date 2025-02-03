@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Protect : MonoBehaviour
 {
-    private float time = 30f;
+    public float time = 30f;
     private float currentTime = 0f;
 
     private float destoryProtectTime = 0.5f;

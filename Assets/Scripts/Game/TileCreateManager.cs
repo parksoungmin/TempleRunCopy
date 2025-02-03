@@ -26,6 +26,8 @@ public class TileCreateManager : MonoBehaviour
 
     private int tileMaxCount = 10;
 
+    private int safeArray = 2;
+
     public void Start()
     {
         nextCreatePoint = createPoint;
@@ -73,11 +75,14 @@ public class TileCreateManager : MonoBehaviour
         if (startTrapDontCreateCount < tileCreateCount)
         {
             startTrapDontCreateCount = 0;
-            SpawnObstacle(newTile);
-            SpawnCoint(newTile);
-            if (itemSawpn)
+            if (tileCreateCount > safeArray)
             {
-                SpawnItem(newTile);
+                SpawnObstacle(newTile);
+                SpawnCoint(newTile);
+                if (itemSawpn)
+                {
+                    SpawnItem(newTile);
+                }
             }
         }
         var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
@@ -164,13 +169,13 @@ public class TileCreateManager : MonoBehaviour
 
             //if (randomValue <= itemSpawnChance)
             //{
-                var spawnPoint = itemSpawnPoints[Random.Range(0, itemSpawnPoints.Count)];
+            var spawnPoint = itemSpawnPoints[Random.Range(0, itemSpawnPoints.Count)];
 
-                var spawnPos = spawnPoint.transform.position;
+            var spawnPos = spawnPoint.transform.position;
 
-                var newCoin = Instantiate(items[Random.Range(0, items.Length)], spawnPos, nextCreateTileRotation);
+            var newCoin = Instantiate(items[Random.Range(0, items.Length)], spawnPos, nextCreateTileRotation);
 
-                newCoin.SetParent(spawnPoint.transform);
+            newCoin.SetParent(spawnPoint.transform);
             //}
         }
     }

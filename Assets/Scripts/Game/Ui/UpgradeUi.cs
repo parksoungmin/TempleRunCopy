@@ -12,8 +12,8 @@ public class UpgradeUi : MonoBehaviour
     public TextMeshProUGUI magnetText;
     public TextMeshProUGUI protectText;
     public TextMeshProUGUI coinDoubleText;
-    public TextMeshProUGUI invincibilityText; 
-    
+    public TextMeshProUGUI invincibilityText;
+
     public TextMeshProUGUI magnetCostText;
     public TextMeshProUGUI protectCostText;
     public TextMeshProUGUI coinDoubleCostText;
@@ -21,8 +21,8 @@ public class UpgradeUi : MonoBehaviour
 
     private string magnetString;
     private string protectString;
-    private string coinDouble;
-    private string invincibility;
+    private string coinDoubleString;
+    private string invincibilityString;
 
     public int magnetId = 1001;
     public int protectId = 2001;
@@ -36,10 +36,10 @@ public class UpgradeUi : MonoBehaviour
 
     int coin = 0;
 
-    //public CoinDouble coinDouble;
-    //public Invincibility invincibility;
-    //public Protect protect;
-    //public Magnet magnet;
+    public CoinDouble coinDouble;
+    public Invincibility invincibility;
+    public Protect protect;
+    public Magnet magnet;
 
     private void Start()
     {
@@ -48,46 +48,98 @@ public class UpgradeUi : MonoBehaviour
     }
     public void OnClickUpgradeMagnet()
     {
-        if (magnetId < magnetMaxId)
+        var magnetCost = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value;
+        if (magnetCost < coin)
         {
-            ++magnetId;
+            if (magnetId < magnetMaxId)
+            {
+                coin -= magnetCost;
+                ++magnetId;
+                UpdateUpgrade();
+            }
+            else
+            {
+                Debug.Log("강화가 최대치입니다.");
+            }
         }
-        UpdateUpgrade();
+        else
+        {
+            Debug.Log("coin이 모자랍니다.");
+        }
     }
     public void OnClickUpgradeProtect()
     {
-        if (protectId < protectMaxId)
+        var protectCost = DataTableManager.UpGradeDataTable.Get(protectId).Cost_Value;
+        if (protectCost < coin)
         {
-            ++protectId;
+            if (protectId < protectMaxId)
+            {
+                coin -= protectCost;
+                ++protectId;
+                UpdateUpgrade();
+            }
+            else
+            {
+                Debug.Log("강화가 최대치입니다.");
+            }
         }
-        UpdateUpgrade();
+        else
+        {
+            Debug.Log("coin이 모자랍니다.");
+        }
     }
     public void OnClickUpgradeCoinDouble()
     {
-        if (coinDoubleId < coinDoubleMaxId)
+        var coinDoubleCost = DataTableManager.UpGradeDataTable.Get(coinDoubleId).Cost_Value;
+        if (coinDoubleCost < coin)
         {
-            ++coinDoubleId;
+            if (coinDoubleId < coinDoubleMaxId)
+            {
+                coin -= coinDoubleCost;
+                ++coinDoubleId;
+                UpdateUpgrade();
+            }
+            else
+            {
+                Debug.Log("강화가 최대치입니다.");
+            }
         }
-        UpdateUpgrade();
+        else
+        {
+            Debug.Log("coin이 모자랍니다.");
+        }
     }
     public void OnClickUpgradeInvincibility()
     {
-        if (invincibilityId < invincibilityMaxId)
+        var invincibilityCost = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value;
+        if (invincibilityCost < coin)
         {
-            ++invincibilityId;
+            if (invincibilityId < invincibilityMaxId)
+            {
+                coin -= invincibilityCost;
+                ++invincibilityId;
+                UpdateUpgrade();
+            }
+            else
+            {
+                Debug.Log("강화가 최대치입니다.");
+            }
         }
-        UpdateUpgrade();
+        else
+        {
+            Debug.Log("coin이 모자랍니다.");
+        }
     }
     private void UpdateUpgrade()
     {
         magnetString = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Name;
-        invincibility = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Name;
-        coinDouble = DataTableManager.UpGradeDataTable.Get(coinDoubleId).Item_Name;
+        invincibilityString = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Name;
+        coinDoubleString = DataTableManager.UpGradeDataTable.Get(coinDoubleId).Item_Name;
         protectString = DataTableManager.UpGradeDataTable.Get(protectId).Item_Name;
 
         magnetText.text = magnetString;
-        invincibilityText.text = invincibility;
-        coinDoubleText.text = coinDouble;
+        invincibilityText.text = invincibilityString;
+        coinDoubleText.text = coinDoubleString;
         protectText.text = protectString;
 
         magnetCostText.text = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value.ToString();
@@ -96,7 +148,10 @@ public class UpgradeUi : MonoBehaviour
         invincibilityCostText.text = DataTableManager.UpGradeDataTable.Get(invincibilityId).Cost_Value.ToString();
 
         coinText.text = coin.ToString();
-
+        coinDouble.time = DataTableManager.UpGradeDataTable.Get(coinDoubleId).Item_Effect;
+        protect.time = DataTableManager.UpGradeDataTable.Get(protectId).Item_Effect;
+        magnet.time = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Effect;
+        invincibility.time = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Effect;
     }
     public void OnClickDestory()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-    private float time = 10;
+    public float time = 10;
     private float currentTime = 0;
 
     private void Awake()
