@@ -13,16 +13,18 @@ public class TileCreateManager : MonoBehaviour
 
     public Vector3 createPoint = new Vector3(0, 0, -5);
 
-    public int startSpawnNum = 25;
+    public int startSpawnNum = 15;
     private Vector3 nextCreatePoint;
     private Quaternion nextCreateTileRotation;
     private int tileCreateCount = 0;
-    private int startTrapDontCreateCount = 9;
+    private int startTrapDontCreateCount = 5;
     private List<int> TileRotation;
 
     private float itemSpwanTime = 5f;
     private float currentItemSpawnTime = 0;
     private bool itemSawpn = false;
+
+    private int tileMaxCount = 10;
 
     public void Start()
     {
@@ -48,8 +50,9 @@ public class TileCreateManager : MonoBehaviour
     {
         ++tileCreateCount;
         Transform newTile;
-        if (tileCreateCount > 10)
+        if (tileCreateCount > tileMaxCount)
         {
+            tileMaxCount = Random.Range(6, 10);
             int ran = Random.Range(0, tiles.Length);
             newTile = Instantiate(tiles[ran], nextCreatePoint, nextCreateTileRotation);
             if (ran == 1)

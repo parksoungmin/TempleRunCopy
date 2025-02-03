@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410071405225292351}
   m_Layer: 0
-  m_Name: TrapCenterPos
+  m_Name: TrapCanterPos
   m_TagString: TrapPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

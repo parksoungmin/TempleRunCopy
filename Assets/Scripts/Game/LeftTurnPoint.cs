@@ -5,7 +5,7 @@ public class LeftTurnPoint : MonoBehaviour
     public float playerRotate = -90f;
     private bool hasCollided = false;
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && !hasCollided)
         {
@@ -20,7 +20,7 @@ public class LeftTurnPoint : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
