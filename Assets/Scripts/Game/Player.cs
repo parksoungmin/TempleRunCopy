@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -55,6 +54,19 @@ public class Player : MonoBehaviour
         //CheckHeight();
         //MoveWithTilt(); 
 #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            swipeTimeAccum = 0;
+            canLeftSwipe = true;
+            canRightSwipe = false;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            swipeTimeAccum = 0;
+            canRightSwipe = true;
+            canLeftSwipe = false;
+        }
+#elif UNITY_STANDALONE_WIN
         if (Input.GetKeyDown(KeyCode.Q))
         {
             swipeTimeAccum = 0;
@@ -163,13 +175,17 @@ public class Player : MonoBehaviour
     }
     private Vector3 GetMoveDirection()
     {
-#if UNITY_EDITOR
-        float tiltInput = Input.GetAxis("Horizontal");
-#elif UNITY_ANDROID || UNITY_IOS
-        float tiltInput = Input.acceleration.x;
-#endif
-        Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
+        float tiltInput = 0f;  // 기본값을 할당
 
+#if UNITY_STANDALONE_WIN  // 윈도우에서만 작동하도록 수정
+        tiltInput = Input.GetAxis("Horizontal");
+#elif UNITY_EDITOR
+        tiltInput = Input.GetAxis("Horizontal");
+#elif UNITY_ANDROID || UNITY_IOS
+    tiltInput = Input.acceleration.x;
+#endif
+
+        Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 
         return moveDirection;

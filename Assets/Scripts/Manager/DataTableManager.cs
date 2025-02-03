@@ -8,7 +8,7 @@ public static class DataTableManager
     static DataTableManager()
     {
 
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
         //foreach(var id in DataTableIds.String)
         //{ 
         //    var table = new StringTable();
@@ -22,6 +22,12 @@ public static class DataTableManager
         //    table.Load(id);
         //    tables.Add(id, table);
         //}
+        foreach (var id in UpGradeDataTableIds.String)
+        {
+            var upgradeTable = new UpGradeDataTable();
+            upgradeTable.Load(id);
+            tables.Add(id, upgradeTable);
+        }
 #else
         //var table = new StringTable();
         //var stringTableId = DataTableIds.String[(int)Varibalbes.currentLanguage];

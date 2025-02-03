@@ -10,9 +10,11 @@ public class LocalizationText : MonoBehaviour
 {
     public string stringId;
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
+//    public Languages editorLanguage;
+//#endif
+
     public Languages editorLanguage;
-#endif
 
     private TextMeshProUGUI text;
 

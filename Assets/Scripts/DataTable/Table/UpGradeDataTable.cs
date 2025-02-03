@@ -1,7 +1,6 @@
 using CsvHelper;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 public class UpGradeDataTable : DataTable
 {
     public class UpGradeData
