@@ -8,7 +8,7 @@ public class StrateWall : MonoBehaviour
     public float waitTime = 2.0f;
     public GameManager gameManager;
     private Player player;
-    private bool dead;
+    //private bool dead;
 
     private void Awake()
     {
@@ -20,10 +20,11 @@ public class StrateWall : MonoBehaviour
         player = collision.gameObject.GetComponent<Player>();
         if (player)
         {
-            if (!player.isTurn && !player.playerDead && !dead)
+            if (!player.isTurn && !player.playerDead)
             {
                 gameManager.GameOver();
-                dead = true;
+                player.speed = 0f;
+                player.tiltSpeed = 0f;
             }
         }
     }
