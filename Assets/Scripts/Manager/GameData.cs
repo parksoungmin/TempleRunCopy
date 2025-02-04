@@ -26,4 +26,19 @@ public static class GameData
         Debug.Log(distanceBestRecord);
         Debug.Log(coin);
     }
+    public static void GameDataSet()
+    {
+        magnetId = SaveLoadManager.Data.magnetId;
+        protectId = SaveLoadManager.Data.protectId;
+        coinDoubleId = SaveLoadManager.Data.coinDoubleId;
+        invincibilityId = SaveLoadManager.Data.invincibilityId;
+        distanceBestRecord = SaveLoadManager.Data.distanceBestRecord;
+        coin = SaveLoadManager.Data.coin;
+        Debug.Log(magnetId);
+        Debug.Log(protectId);
+        Debug.Log(coinDoubleId);
+        Debug.Log(invincibilityId);
+        Debug.Log(distanceBestRecord);
+        Debug.Log(coin);
+    }
 }

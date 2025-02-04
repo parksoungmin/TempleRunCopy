@@ -18,10 +18,18 @@ public class Trap : MonoBehaviour
         var player = collision.gameObject.GetComponent<Player>();
         if (player)
         {
-            if(!dead)
+            if (!dead)
             {
+                //Collider trapCollider = GetComponent<Collider>(); 
+                //if (trapCollider != null)
+                //{
+                //    trapCollider.enabled = false;
+                //}
+                //else
+                //{
                 gameManager.GameOver();
                 dead = true;
+                //}
             }
         }
     }

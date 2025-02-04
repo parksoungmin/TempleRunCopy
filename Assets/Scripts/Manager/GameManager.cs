@@ -73,5 +73,6 @@ public class GameManager : MonoBehaviour
         SaveLoadManager.Data.coin = coin;
         SaveLoadManager.Data.distanceBestRecord = uiManager.distanceBestRecord;
         SaveLoadManager.Save();
+        GameData.GameDataSet();
     }
 }
