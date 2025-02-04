@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        player.playerDead = true;
         if (player.protect.gameObject.activeSelf)
         {
             player.protect.DestroyProtect();
@@ -53,11 +52,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            player.playerDead = true;
             coin += uiManager.currentGameacquireCoin;
             uiManager.GameOver();
             enemy.MoveToPlayer(player.transform.position);
             gameOver = true;
-            player.transform.position = transform.position;
+            player.transform.position = player.transform.position;
             player.speed = 0f;
             player.tiltSpeed = 0f;
             SaveGameProgress();
