@@ -147,8 +147,8 @@ GameObject:
   - component: {fileID: 6685103449945172663}
   - component: {fileID: 3262271353801022878}
   - component: {fileID: 8793227867192160781}
-  - component: {fileID: 2278279203967745629}
-  - component: {fileID: 3225483675318295055}
+  - component: {fileID: 2958971531971732723}
+  - component: {fileID: 2696013245545502279}
   m_Layer: 0
   m_Name: Strate Wall
   m_TagString: Untagged
@@ -221,7 +221,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2278279203967745629
+--- !u!65 &2958971531971732723
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,9 +240,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 3, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3225483675318295055
+  m_Size: {x: 2, y: 3, z: 1}
+  m_Center: {x: 0.5, y: 1, z: 0}
+--- !u!114 &2696013245545502279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4194654811008174229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbfc8a8f4929f24ca11f003a26992ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a9dc022d02bff246ae8a7e0e2ddd15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waitTime: 2
@@ -374,7 +374,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 5, z: 1}
+  m_Size: {x: 7, y: 5, z: 1.5}
   m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &5071757740659920889
 MonoBehaviour:

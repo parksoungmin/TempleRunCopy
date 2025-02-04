@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public void Start()
     {
-        Application.targetFrameRate = -1;
+       QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 999;
         scoreUi.SetActive(false);
         inGameUi.SetActive(true);
     }

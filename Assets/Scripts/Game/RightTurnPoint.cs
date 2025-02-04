@@ -17,7 +17,7 @@ public class RightTurnPoint : MonoBehaviour
             {
                 player.transform.Rotate(0, playerRotate, 0);
                 player.canRightSwipe = false;
-                Debug.Log("충돌 (트리거)");
+                player.isTurn = true;
                 hasCollided = true; // 충돌을 한 번만 처리
             }
         }
@@ -32,7 +32,7 @@ public class RightTurnPoint : MonoBehaviour
             {
                 player.transform.Rotate(0, playerRotate, 0);
                 player.canRightSwipe = false;
-                Debug.Log("충돌 (물리적)");
+                player.isTurn = true;
             }
         }
     }

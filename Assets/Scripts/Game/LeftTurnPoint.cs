@@ -16,6 +16,7 @@ public class LeftTurnPoint : MonoBehaviour
                 player.canLeftSwipe = false;
                 Debug.Log("충돌 (트리거)");
                 hasCollided = true; // 충돌을 한 번만 처리
+                player.isTurn = true;
             }
         }
     }
@@ -30,6 +31,7 @@ public class LeftTurnPoint : MonoBehaviour
                 player.transform.Rotate(0, playerRotate, 0);
                 player.canLeftSwipe = false;
                 Debug.Log("충돌 (물리적)");
+                player.isTurn = true;
             }
         }
     }

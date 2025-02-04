@@ -13,7 +13,6 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI inGameScoreText;
     public TextMeshProUGUI inGameCoinText;
     public GameObject upgradeUi;
-
     public int score = 0;
     public int coin = 0;
     public void OnButtonClickGameReStart()

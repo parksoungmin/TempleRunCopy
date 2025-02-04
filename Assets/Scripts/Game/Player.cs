@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -22,6 +20,7 @@ public class Player : MonoBehaviour
 
     private bool IsJumping = false;
     private bool UnityJump = false;
+    public bool isTurn = false;
 
     //½ºÄÚ¾î
     private Vector3 lastPostion;
@@ -135,6 +134,7 @@ public class Player : MonoBehaviour
         Vector3 forwardMovement = transform.forward * speed;
 
         var move = forwardMovement + GetMoveDirection();
+
         rb.MovePosition(rb.position + move * Time.deltaTime);
     }
 
