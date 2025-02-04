@@ -20,7 +20,7 @@ public class StrateWall : MonoBehaviour
         player = collision.gameObject.GetComponent<Player>();
         if (player)
         {
-            if (!player.isTurn)
+            if (!player.isTurn || !player.playerDead)
             {
                 if (!dead)
                 {

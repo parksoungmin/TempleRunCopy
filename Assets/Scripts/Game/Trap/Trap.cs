@@ -15,7 +15,8 @@ public class Trap : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Player>())
+        var player = collision.gameObject.GetComponent<Player>();
+        if (player)
         {
             if(!dead)
             {

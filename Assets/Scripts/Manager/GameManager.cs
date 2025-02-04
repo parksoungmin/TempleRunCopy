@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Enemy enemy;
     public UpgradeUi upgradeUi;
     private float currentGameOverTime = 0f;
-    public float gameOverTime = 2f;
+    public float gameOverTime = 0f;
     public UiManager uiManager;
 
     public int coin;
@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        player.playerDead = true;
         if (player.protect.gameObject.activeSelf)
         {
             player.protect.DestroyProtect();
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
             uiManager.GameOver();
             enemy.MoveToPlayer(player.transform.position);
             gameOver = true;
+            player.transform.position = transform.position;
             player.speed = 0f;
             player.tiltSpeed = 0f;
             SaveGameProgress();

@@ -11,7 +11,6 @@ public class PlayerCameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         Quaternion targetRotation = playerPivot.rotation;
-
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }

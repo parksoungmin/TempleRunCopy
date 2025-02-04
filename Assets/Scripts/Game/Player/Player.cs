@@ -1,11 +1,8 @@
-using UnityEditor.Playables;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
-    public UpgradeUi upgradeUi;
-
     public float speed = 10f;  // 걷는 속도
     public float swipeMovement = 2f;  // 좌우 스와이프 속도
     public float playerRotate = 90;
@@ -23,7 +20,7 @@ public class Player : MonoBehaviour
     private bool IsJumping = false;
     private bool UnityJump = false;
     public bool isTurn = false;
-
+    public bool playerDead = false;
     //스코어
     private Vector3 lastPostion;
     public float totalDistance;
@@ -46,6 +43,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        playerDead = false;
         lastPostion = transform.position;
         totalDistance = 0f;
     }
@@ -113,7 +111,6 @@ public class Player : MonoBehaviour
         //스코어
         Vector3 delta = transform.position - lastPostion;
         delta.y = 0f;
-        //Mathf.Abs(delta.x) + Mathf.Abs(delta.z);
         var deltaMagnitude = delta.magnitude;
         totalDistance += deltaMagnitude;
         speedDistance += deltaMagnitude;
@@ -142,7 +139,6 @@ public class Player : MonoBehaviour
 
     private void CheckHeight()
     {
-        // Y축 위치가 -10 미만이면 죽은 것으로 간주
         if (transform.position.y < -10)
         {
             //GameManager.Instance.Die();
