@@ -38,7 +38,7 @@ public class UpgradeUi : MonoBehaviour
     private int coinDoubleMaxId = 3005;
     private int invincibilityMaxId = 4005;
 
-    public int coin = 0;
+    public int coin;
 
     public CoinDouble coinDouble;
     public Invincibility invincibility;
@@ -46,13 +46,18 @@ public class UpgradeUi : MonoBehaviour
     public Magnet magnet;
     private void Awake()
     {
+
+    }
+    private void Start()
+    {
         magnetId = GameData.magnetId;
         protectId = GameData.protectId;
         coinDoubleId = GameData.coinDoubleId;
         invincibilityId = GameData.invincibilityId;
         coin = gameManager.coin;
+        UpdateUpgrade();
     }
-    private void Start()
+    private void OnEnable()
     {
         coin = gameManager.coin;
         UpdateUpgrade();
@@ -164,6 +169,7 @@ public class UpgradeUi : MonoBehaviour
         protect.time = DataTableManager.UpGradeDataTable.Get(protectId).Item_Effect;
         magnet.time = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Effect;
         invincibility.time = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Effect;
+        gameManager.coin = coin;
         gameManager.SaveGameProgress();
     }
     public void OnClickDestory()

@@ -7,10 +7,10 @@ public class RightTurnPoint : MonoBehaviour
     public float playerRotate = 90f;
 
     private bool hasCollided = false;
-
+    Player player;
     public void OnTriggerStay(Collider other)
     {
-        var player = other.GetComponent<Player>();
+        player = other.GetComponent<Player>();
         if (player && !hasCollided)
         {
             if (!player.playerDead)
@@ -40,6 +40,13 @@ public class RightTurnPoint : MonoBehaviour
                     player.isTurn = true;
                 }
             }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (player != null)
+        {
+            player.isTurn = false;
         }
     }
 }

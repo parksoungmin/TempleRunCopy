@@ -24,5 +24,6 @@ public static class GameData
         Debug.Log(coinDoubleId);
         Debug.Log(invincibilityId);
         Debug.Log(distanceBestRecord);
+        Debug.Log(coin);
     }
 }

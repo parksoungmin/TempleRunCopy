@@ -4,7 +4,7 @@ public class LeftTurnPoint : MonoBehaviour
 {
     public float playerRotate = -90f;
     private bool hasCollided = false;
-
+    Player player;
     public void OnTriggerStay(Collider other)
     {
         var player = other.GetComponent<Player>();
@@ -26,7 +26,7 @@ public class LeftTurnPoint : MonoBehaviour
 
     public void OnCollisionStay(Collision collision)
     {
-        var player = collision.collider.GetComponent<Player>();
+        player = collision.collider.GetComponent<Player>();
         if (collision.collider.CompareTag("Player"))
         {
             if (!player.playerDead)
@@ -39,6 +39,13 @@ public class LeftTurnPoint : MonoBehaviour
                     player.isTurn = true;
                 }
             }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (player != null)
+        {
+            player.isTurn = false;
         }
     }
 }

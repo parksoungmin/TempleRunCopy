@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - UiManager
   - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX

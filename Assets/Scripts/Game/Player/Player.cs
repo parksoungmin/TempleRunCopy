@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float playerRotate = 90;
     public float tiltSpeed = 3f;
 
+    public float raycastDistance = 1f;
 
     public float jumpForce = 5f;
 
@@ -173,17 +174,39 @@ public class Player : MonoBehaviour
     }
     private Vector3 GetMoveDirection()
     {
-        float tiltInput = 0f;  // 기본값을 할당
+        float tiltInputX = 0f; // 수평 이동
 
-#if UNITY_STANDALONE_WIN  // 윈도우에서만 작동하도록 수정
-        tiltInput = Input.GetAxis("Horizontal");
-#elif UNITY_EDITOR
-        tiltInput = Input.GetAxis("Horizontal");
+        // 회전 후의 방향을 기준으로 벽 감지
+        Vector3 forwardDirection = transform.forward; // 현재 방향
+        Vector3 rightDirection = transform.right; // 현재 오른쪽 방향
+
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        tiltInputX = Input.GetAxis("Horizontal"); // 좌우 이동
+
+        // x축 이동에 대한 벽 감지
+        if (tiltInputX > 0 && IsWallDetected(rightDirection))
+        {
+            tiltInputX = 0;
+        }
+        else if (tiltInputX < 0 && IsWallDetected(-rightDirection))
+        {
+            tiltInputX = 0;
+        }
 #elif UNITY_ANDROID || UNITY_IOS
-    tiltInput = Input.acceleration.x;
+    tiltInputX = Input.acceleration.x; // 좌우 이동
+
+    // x축 이동에 대한 벽 감지
+    if (IsWallDetected(-rightDirection) && tiltInputX < 0)
+    {
+        tiltInputX = 0;
+    }
+    else if (IsWallDetected(rightDirection) && tiltInputX > 0)
+    {
+        tiltInputX = 0;
+    }
 #endif
 
-        Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
+        Vector3 tiltMovement = new Vector3(tiltInputX * tiltSpeed, 0, 0); // z축 이동 제거
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 
         return moveDirection;
@@ -204,7 +227,17 @@ public class Player : MonoBehaviour
             speed += plus;
         }
     }
-    public void SetItemEffect()
+    bool IsWallDetected(Vector3 direction)
     {
+        RaycastHit hit;
+        // 지정된 방향으로 레이캐스트
+        if (Physics.Raycast(transform.position, direction, out hit, raycastDistance))
+        {
+            if (hit.collider != null && hit.collider.CompareTag("Wall"))
+            {
+                return true; // 벽이 감지됨
+            }
+        }
+        return false; // 벽이 감지되지 않음
     }
 }
