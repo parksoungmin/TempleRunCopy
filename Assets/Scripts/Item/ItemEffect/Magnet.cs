@@ -9,6 +9,7 @@ public class Magnet : MonoBehaviour
 
     private void Awake()
     {
+        time = DataTableManager.UpGradeDataTable.Get(GameData.magnetId).Item_Effect;
     }
     private void Update()
     {

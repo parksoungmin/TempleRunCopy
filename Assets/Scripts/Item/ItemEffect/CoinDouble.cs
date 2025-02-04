@@ -6,7 +6,10 @@ public class CoinDouble : MonoBehaviour
 {
     public float time = 10f;
     private float currentTime = 0f;
-
+    private void Awake()
+    {
+        time = DataTableManager.UpGradeDataTable.Get(GameData.coinDoubleId).Item_Effect;
+    }
     private void Update()
     {
         currentTime += Time.deltaTime;

@@ -1,8 +1,10 @@
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+    public UpgradeUi upgradeUi;
 
     public float speed = 10f;  // 걷는 속도
     public float swipeMovement = 2f;  // 좌우 스와이프 속도
@@ -205,5 +207,8 @@ public class Player : MonoBehaviour
             speedDistance = 0f;
             speed += plus;
         }
+    }
+    public void SetItemEffect()
+    {
     }
 }

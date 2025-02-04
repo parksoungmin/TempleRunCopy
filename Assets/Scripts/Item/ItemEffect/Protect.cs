@@ -14,6 +14,10 @@ public class Protect : MonoBehaviour
 
     public Player player;
 
+    private void Start()
+    {
+        time = DataTableManager.UpGradeDataTable.Get(GameData.protectId).Item_Effect;
+    }
     private void Update()
     {
         if (destoryProtect)

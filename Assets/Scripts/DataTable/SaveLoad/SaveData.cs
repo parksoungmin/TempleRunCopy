@@ -12,7 +12,12 @@ public abstract class SaveData
 
 public class SaveDataV1 : SaveData
 {
-    public string PlayerName = "TEST";
+    public int magnetId;
+    public int protectId;
+    public int coinDoubleId;
+    public int invincibilityId;
+    public int coin;
+    public float distanceBestRecord;
 
     public SaveDataV1()
     {
@@ -23,7 +28,7 @@ public class SaveDataV1 : SaveData
     {
         SaveDataV2 v2 = new SaveDataV2()
         {
-            PlayerName = PlayerName,
+
         };
         return v2;
     }
@@ -38,6 +43,4 @@ public class SaveDataV2 : SaveDataV1
         Version = 2;
         itemList = new List<SaveItemData>();
     }
-
-
 }

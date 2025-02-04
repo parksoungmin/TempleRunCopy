@@ -1,3 +1,5 @@
+using CsvHelper.Configuration.Attributes;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,33 +21,43 @@ public class UpgradeUi : MonoBehaviour
     public TextMeshProUGUI coinDoubleCostText;
     public TextMeshProUGUI invincibilityCostText;
 
+    public GameManager gameManager;
+
     private string magnetString;
     private string protectString;
     private string coinDoubleString;
     private string invincibilityString;
 
-    public int magnetId = 1001;
-    public int protectId = 2001;
-    public int coinDoubleId = 3001;
-    public int invincibilityId = 4001;
+    public int magnetId;
+    public int protectId;
+    public int coinDoubleId;
+    public int invincibilityId;
 
     private int magnetMaxId = 1005;
     private int protectMaxId = 2005;
     private int coinDoubleMaxId = 3005;
     private int invincibilityMaxId = 4005;
 
-    int coin = 0;
+    public int coin = 0;
 
     public CoinDouble coinDouble;
     public Invincibility invincibility;
     public Protect protect;
     public Magnet magnet;
-
+    private void Awake()
+    {
+        magnetId = GameData.magnetId;
+        protectId = GameData.protectId;
+        coinDoubleId = GameData.coinDoubleId;
+        invincibilityId = GameData.invincibilityId;
+        coin = gameManager.coin;
+    }
     private void Start()
     {
-        coin = uiManager.coin;
+        coin = gameManager.coin;
         UpdateUpgrade();
     }
+
     public void OnClickUpgradeMagnet()
     {
         var magnetCost = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value;
@@ -111,18 +123,18 @@ public class UpgradeUi : MonoBehaviour
     }
     public void OnClickUpgradeInvincibility()
     {
-        var invincibilityCost = DataTableManager.UpGradeDataTable.Get(magnetId).Cost_Value;
+        var invincibilityCost = DataTableManager.UpGradeDataTable.Get(invincibilityId).Cost_Value;
         if (invincibilityCost < coin)
         {
             if (invincibilityId < invincibilityMaxId)
-            {
-                coin -= invincibilityCost;
-                ++invincibilityId;
-                UpdateUpgrade();
-            }
-            else
-            {
-                Debug.Log("강화가 최대치입니다.");
+        {
+            coin -= invincibilityCost;
+            ++invincibilityId;
+            UpdateUpgrade();
+        }
+        else
+        {
+            Debug.Log("강화가 최대치입니다.");
             }
         }
         else
@@ -152,9 +164,14 @@ public class UpgradeUi : MonoBehaviour
         protect.time = DataTableManager.UpGradeDataTable.Get(protectId).Item_Effect;
         magnet.time = DataTableManager.UpGradeDataTable.Get(magnetId).Item_Effect;
         invincibility.time = DataTableManager.UpGradeDataTable.Get(invincibilityId).Item_Effect;
+        gameManager.SaveGameProgress();
     }
     public void OnClickDestory()
     {
         gameObject.SetActive(false);
+    }
+    public void OnClickOpen()
+    {
+        gameObject.SetActive(true);
     }
 }

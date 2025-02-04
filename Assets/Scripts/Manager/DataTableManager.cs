@@ -66,13 +66,13 @@ public static class DataTableManager
         }
     }
 
-    public static ItemTable ItemTable
-    {
-        get
-        {
-            return Get<ItemTable>(ItemTableIds.String[0]);
-        }
-    }
+    //public static ItemTable ItemTable
+    //{
+    //    get
+    //    {
+    //        return Get<ItemTable>(ItemTableIds.String[0]);
+    //    }
+    //}
 
     public static T Get<T>(string id) where T : DataTable
     {

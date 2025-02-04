@@ -7,7 +7,7 @@ public class SaveItemData
 {
     public int instanceId;
     //[JsonConverter(typeof(ItemDataConverter))]
-    public ItemData data;
+    public UpGradeDataTable data;
     public System.DateTime creationTime;
 
     public SaveItemData()

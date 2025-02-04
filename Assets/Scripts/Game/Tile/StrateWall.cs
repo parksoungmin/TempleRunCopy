@@ -7,8 +7,8 @@ public class StrateWall : MonoBehaviour
 {
     public float waitTime = 2.0f;
     public GameManager gameManager;
-    private bool dead = false;
     private Player player;
+    private bool dead;
 
     private void Awake()
     {
@@ -22,8 +22,11 @@ public class StrateWall : MonoBehaviour
         {
             if (!player.isTurn)
             {
-                gameManager.GameOver();
-                dead = true;
+                if (!dead)
+                {
+                    gameManager.GameOver();
+                    dead = true;
+                }
             }
         }
     }
@@ -31,7 +34,6 @@ public class StrateWall : MonoBehaviour
     {
         if (player != null)
         {
-            Debug.Log("Ã£À½");
             player.isTurn = false;
         }
     }

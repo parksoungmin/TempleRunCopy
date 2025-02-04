@@ -7,8 +7,9 @@ public class Invincibility : MonoBehaviour
     public float time = 10;
     private float currentTime = 0;
 
-    private void Awake()
+    private void Start()
     {
+        time = DataTableManager.UpGradeDataTable.Get(GameData.invincibilityId).Item_Effect;
     }
     private void Update()
     {

@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using SaveDataVC = SaveDataV2;
+using SaveDataVC = SaveDataV1;
 
 public static class SaveLoadManager
 {
-    public static int SaveDataVersion { get; private set; } = 2;
+    public static int SaveDataVersion { get; private set; } = 1;
 
     public static SaveDataVC Data { get; set; }
 
     private static readonly string[] SaveFileName =
     {
         "SaveAuto.json",
-        "Save1.json",
+        "upgradeData.json",
         "Save2.json",
         "Save3.json",
     };
@@ -38,6 +38,12 @@ public static class SaveLoadManager
         if (!Load())
         {
             Data = new SaveDataVC();
+            Data.magnetId = 1001;
+            Data.protectId = 2001;
+            Data.coinDoubleId = 3001;
+            Data.invincibilityId = 4001;
+            Data.coin = 0;
+            Data.distanceBestRecord = 0f;
             Save();
         }
     }
@@ -48,6 +54,7 @@ public static class SaveLoadManager
         {
             return false;
         }
+        
 
         if (!Directory.Exists(SaveDirectory))
         {
@@ -57,6 +64,7 @@ public static class SaveLoadManager
         var path = Path.Combine(SaveDirectory, SaveFileName[slot]);
         var json = JsonConvert.SerializeObject(Data, settings);
         File.WriteAllText(path, json);
+        Debug.Log("Save");
         return true;
     }
 
