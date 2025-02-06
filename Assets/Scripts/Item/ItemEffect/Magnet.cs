@@ -27,6 +27,7 @@ public class Magnet : MonoBehaviour
     }
     public void OnMagnet()
     {
+        currentTime = 0;
         gameObject.SetActive(true);
     }
 }

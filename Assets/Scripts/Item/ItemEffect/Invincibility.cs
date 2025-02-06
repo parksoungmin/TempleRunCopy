@@ -26,6 +26,7 @@ public class Invincibility : MonoBehaviour
 
     public void OnInvincibility()
     {
+        currentTime = 0;
         gameObject.SetActive(true);
     }
 }

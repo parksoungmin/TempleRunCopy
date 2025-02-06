@@ -20,16 +20,24 @@ public class Trap : MonoBehaviour
         {
             if (!dead)
             {
-                //Collider trapCollider = GetComponent<Collider>(); 
-                //if (trapCollider != null)
-                //{
-                //    trapCollider.enabled = false;
-                //}
-                //else
-                //{
-                gameManager.GameOver();
-                dead = true;
-                //}
+                Collider trapCollider = GetComponent<Collider>();
+                if (trapCollider != null)
+                {
+                    if (player.invincibility.gameObject.activeSelf)
+                    {
+                        trapCollider.enabled = false;
+                    }
+                    else if (player.protect.gameObject.activeSelf)
+                    {
+                        trapCollider.enabled = false;
+                        player.protect.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        gameManager.GameOver();
+                        dead = true;
+                    }
+                }
             }
         }
     }

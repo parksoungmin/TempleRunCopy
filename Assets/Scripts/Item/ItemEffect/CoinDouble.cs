@@ -20,6 +20,7 @@ public class CoinDouble : MonoBehaviour
     }
     public void OnCoinDouble()
     {
+        currentTime = 0f;
         gameObject.SetActive(true);
     }
 }

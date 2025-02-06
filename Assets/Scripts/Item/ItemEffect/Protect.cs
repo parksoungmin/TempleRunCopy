@@ -36,6 +36,7 @@ public class Protect : MonoBehaviour
     }
     public void OnProtect()
     {
+        currentTime = 0;
         gameObject.SetActive(true);
     }
     public void DestroyProtect()

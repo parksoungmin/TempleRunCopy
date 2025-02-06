@@ -173,6 +173,7 @@ public class Player : MonoBehaviour
         if (!IsJumping)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("Jumping");
         }
 
         IsJumping = true;
