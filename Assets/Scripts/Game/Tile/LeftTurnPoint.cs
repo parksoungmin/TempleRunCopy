@@ -41,11 +41,4 @@ public class LeftTurnPoint : MonoBehaviour
             }
         }
     }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (player != null)
-        {
-            player.isTurn = false;
-        }
-    }
 }

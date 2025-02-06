@@ -42,11 +42,4 @@ public class RightTurnPoint : MonoBehaviour
             }
         }
     }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (player != null)
-        {
-            player.isTurn = false;
-        }
-    }
 }

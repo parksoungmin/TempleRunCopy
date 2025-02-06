@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour
         {
 
         }
-        else
+        else if (!player.playerDead)
         {
+            enemy.MoveToPlayer(player.transform.position);
+            player.animator.SetTrigger("Die");
             player.playerDead = true;
             coin += uiManager.currentGameacquireCoin;
             uiManager.GameOver();
-            enemy.MoveToPlayer(player.transform.position);
             gameOver = true;
             player.transform.position = player.transform.position;
             player.speed = 0f;

@@ -29,7 +29,7 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         score = Mathf.RoundToInt(player.totalDistance * 10f);
-        inGameScoreText.text = $"{score}M";
+        inGameScoreText.text = $"{score}";
     }
     public void DistanceSet()
     {

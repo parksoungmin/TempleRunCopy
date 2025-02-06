@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: a077ca9522f32454aaf6833cafc90af1
-AssetOrigin:
-  serializedVersion: 1
-  productId: 192633
-  packageName: Pspsps Cat
-  packageVersion: 2.0
-  assetPath: Assets/Suriyun/Animations/Pspsps Animations/Character Animations/Anim_Chibi@Jump.fbx
-  uploadId: 584007
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -26,15 +19,10 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Anim_Chibi@Jump' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'calf_r' has translation animation that
-      will be discarded.\n\t'ball_r' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\t'lowerarm_r' has translation animation
-      that will be discarded.\n\t'neck_01' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'calf_l' has translation animation
-      that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -59,7 +47,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1

@@ -32,14 +32,19 @@ public class Player : MonoBehaviour
     public Protect protect;
     public Invincibility invincibility;
     public CoinDouble coinDouble;
+    public Animator animator;
 
     private int speedUPCount = 0;
     public int speedUpMaxCount = 10;
     public float plus = 1.5f;
 
+    private float isTurnTime = 2f;
+    private float isTurnCurrentTime = 0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -51,6 +56,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(isTurn)
+        {
+            isTurnCurrentTime += Time.deltaTime;
+            if(isTurnCurrentTime > isTurnTime)
+            {
+                isTurnCurrentTime = 0f;
+                isTurn = false;
+            }
+        }
         //CheckHeight();
         //MoveWithTilt(); 
 #if UNITY_EDITOR
@@ -130,6 +144,7 @@ public class Player : MonoBehaviour
             UnityJump = false;
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsJumping = true;
+            animator.SetTrigger("Jumping");
         }
         Vector3 forwardMovement = transform.forward * speed;
 
@@ -215,6 +230,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            animator.SetTrigger("Grounded");
             IsJumping = false;
         }
     }
