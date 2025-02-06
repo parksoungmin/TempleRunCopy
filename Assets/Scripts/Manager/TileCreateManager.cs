@@ -139,7 +139,7 @@ public class TileCreateManager : MonoBehaviour
     {
         var coinSpawnPoints = new List<GameObject>();
 
-        FindTrapPos(newTile, coinSpawnPoints);
+        FindCoinPos(newTile, coinSpawnPoints);
 
         if (coinSpawnPoints.Count > 0)
         {
@@ -164,7 +164,7 @@ public class TileCreateManager : MonoBehaviour
         itemSawpn = false;
         var itemSpawnPoints = new List<GameObject>();
 
-        FindTrapPos(newTile, itemSpawnPoints);
+        FindItemPos(newTile, itemSpawnPoints);
 
         if (itemSpawnPoints.Count > 0)
         {
@@ -196,6 +196,32 @@ public class TileCreateManager : MonoBehaviour
             }
 
             FindTrapPos(child, obstacleSpawnPoints);
+        }
+    }  
+    void FindCoinPos(Transform parent, List<GameObject> obstacleSpawnPoints)
+    {
+        // 자식 오브젝트들을 모두 확인
+        foreach (Transform child in parent)
+        {
+            if (child.CompareTag("CoinPos"))
+            {
+                obstacleSpawnPoints.Add(child.gameObject);
+            }
+
+            FindCoinPos(child, obstacleSpawnPoints);
+        }
+    }  
+    void FindItemPos(Transform parent, List<GameObject> obstacleSpawnPoints)
+    {
+        // 자식 오브젝트들을 모두 확인
+        foreach (Transform child in parent)
+        {
+            if (child.CompareTag("ItemPos"))
+            {
+                obstacleSpawnPoints.Add(child.gameObject);
+            }
+
+            FindItemPos(child, obstacleSpawnPoints);
         }
     }
 }
