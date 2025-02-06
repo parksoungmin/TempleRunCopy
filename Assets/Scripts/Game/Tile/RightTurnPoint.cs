@@ -7,7 +7,14 @@ public class RightTurnPoint : MonoBehaviour
     public float playerRotate = 90f;
 
     private bool hasCollided = false;
+    public GameObject closeWall;
+    public GameObject closeWall2;
     Player player;
+    private void Awake()
+    {
+        closeWall.SetActive(false);
+        closeWall2.SetActive(true);
+    }
     public void OnTriggerStay(Collider other)
     {
         player = other.GetComponent<Player>();
@@ -20,6 +27,8 @@ public class RightTurnPoint : MonoBehaviour
                     player.transform.Rotate(0, playerRotate, 0);
                     player.canRightSwipe = false;
                     player.isTurn = true;
+                    closeWall.SetActive(true);
+                    closeWall2.SetActive(false);
                     hasCollided = true; // 충돌을 한 번만 처리
                 }
             }
@@ -36,7 +45,8 @@ public class RightTurnPoint : MonoBehaviour
                 if (player.canRightSwipe || player.invincibility.gameObject.activeSelf)
                 {
                     player.transform.Rotate(0, playerRotate, 0);
-                    player.canRightSwipe = false;
+                    player.canRightSwipe = false; 
+                    closeWall.SetActive(true);
                     player.isTurn = true;
                 }
             }

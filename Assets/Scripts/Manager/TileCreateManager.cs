@@ -99,7 +99,7 @@ public class TileCreateManager : MonoBehaviour
 
         if (obstacleSpawnPoints.Count > 0)
         {
-            float trapSpawnChance = 0.5f;
+            float trapSpawnChance = 0.6f;
 
             float randomValue = Random.Range(0f, 1f);
 
@@ -143,7 +143,7 @@ public class TileCreateManager : MonoBehaviour
 
         if (coinSpawnPoints.Count > 0)
         {
-            float coinSpawnChance = 0.3f;
+            float coinSpawnChance = 0.25f;
 
             float randomValue = Random.Range(0f, 1f);
 

@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 863715145195973079, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2586655063861548678, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

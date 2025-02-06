@@ -5,6 +5,15 @@ public class LeftTurnPoint : MonoBehaviour
     public float playerRotate = -90f;
     private bool hasCollided = false;
     Player player;
+    public GameObject closeWall;
+    public GameObject closeWall2;
+
+    private void Awake()
+    {
+        closeWall.SetActive(false);
+        closeWall2.SetActive(true);
+
+    }
     public void OnTriggerStay(Collider other)
     {
         var player = other.GetComponent<Player>();
@@ -18,6 +27,8 @@ public class LeftTurnPoint : MonoBehaviour
                     player.canLeftSwipe = false;
                     Debug.Log("충돌 (트리거)");
                     hasCollided = true; // 충돌을 한 번만 처리
+                    closeWall.SetActive(true);
+                    closeWall2.SetActive(false);
                     player.isTurn = true;
                 }
             }
@@ -36,6 +47,7 @@ public class LeftTurnPoint : MonoBehaviour
                     player.transform.Rotate(0, playerRotate, 0);
                     player.canLeftSwipe = false;
                     Debug.Log("충돌 (물리적)");
+                    closeWall.SetActive(true);
                     player.isTurn = true;
                 }
             }

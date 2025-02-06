@@ -240,6 +240,7 @@ public class Player : MonoBehaviour
         if (speedDistance > speedUpDistance && speedUPCount < speedUpMaxCount)
         {
             speedUPCount++;
+            speedUpDistance += 100f;
             speedDistance = 0f;
             speed += plus;
         }

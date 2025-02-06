@@ -23,7 +23,10 @@ public class Magnet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var coin = other.gameObject.GetComponent<Coin>();
-        coin.GetMagnet();
+        if (coin != null)
+        {
+            coin.GetMagnet();
+        }
     }
     public void OnMagnet()
     {

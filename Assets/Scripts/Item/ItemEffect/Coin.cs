@@ -43,6 +43,15 @@ public class Coin : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        var trap = other.gameObject.GetComponent<Trap>();
+        if (trap)
+        {
+            trap.gameObject.SetActive(false);
+            Debug.Log("°ãÃÆÁö·Õ");
+        }
+    }
     public void GetMagnet()
     {
         startMagnet = true;
