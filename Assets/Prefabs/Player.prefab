@@ -4073,17 +4073,13 @@ Animator:
   m_GameObject: {fileID: 8548901029167673069}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f62d37f4ff379f544acccbd7e29c1844, type: 3}
-  m_Controller: {fileID: 9100000, guid: cb806110b9b34f042a9442dbd03d65ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: 30d577c953e25f94c865f6a0e4dc7c09, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Jaw'\n\tTransform 'Toes_L'\n\tTransform 'Toes_L'\n\tTransform
-    'Toes_R'\n\tTransform 'Jaw'\n\tTransform 'Toes_R'\n\tTransform 'Jaw'\n\tTransform
-    'Toes_L'\n\tTransform 'Toes_R'\n\tFrom animation clip 'RunA_Curve_FrontLeft@loop'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -4114,7 +4110,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &247894806643376089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,11 +4127,14 @@ MonoBehaviour:
   swipeMovement: 2
   playerRotate: 90
   tiltSpeed: 8
+  raycastDistance: 0.2
   jumpForce: 12
   swipeTimeAccum: 0
   swipeTimeDelay: 2
   canLeftSwipe: 0
   canRightSwipe: 0
+  isTurn: 0
+  playerDead: 0
   totalDistance: 0
   speedUpDistance: 100
   magnet: {fileID: 3633605863742859591}
@@ -4184,10 +4183,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.35
-  m_Height: 1
+  m_Radius: 0.3898577
+  m_Height: 1.1104839
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.49428654, z: -0.039857745}
 --- !u!1 &8797912072708037861
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,7 +5242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5651437123151047513, guid: ef71503d18d05024ca064e3f5e3641d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.59
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 5651437123151047513, guid: ef71503d18d05024ca064e3f5e3641d4, type: 3}
       propertyPath: m_LocalRotation.w
