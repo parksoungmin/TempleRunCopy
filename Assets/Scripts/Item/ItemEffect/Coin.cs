@@ -49,7 +49,6 @@ public class Coin : MonoBehaviour
         if (trap)
         {
             trap.gameObject.SetActive(false);
-            Debug.Log("°ãÃÆÁö·Õ");
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -58,7 +57,6 @@ public class Coin : MonoBehaviour
         if (trap)
         {
             trap.gameObject.SetActive(false);
-            Debug.Log("°ãÃÆÁö¶û");
         }
     }
     public void GetMagnet()

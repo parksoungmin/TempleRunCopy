@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileDelete : MonoBehaviour
 {
-    private float destroyTime = 2f;
+    private readonly float destroyTime = 1f;
     private bool active = false;
     private void OnTriggerStay(Collider other)
     {
@@ -18,5 +18,4 @@ public class TileDelete : MonoBehaviour
             }
         }
     }
-
 }

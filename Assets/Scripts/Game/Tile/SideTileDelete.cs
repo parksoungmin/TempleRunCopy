@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideTileDelete : MonoBehaviour
+public class SideTileDelete: MonoBehaviour
 {
-    private float destroyTime = 2f;
-    private void OnTriggerEnter(Collider other)
+    private readonly float destroyTime = 1f;
+    private bool active = false;
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<Player>())
         {
-            Destroy(transform.parent.gameObject, destroyTime);
-            GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
+            if (!active)
+            {
+                Destroy(transform.parent.gameObject, destroyTime);
+                GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
+                Debug.Log("ªÁ¿ÃµÂ");
+                active = true;
+            }
         }
     }
 

@@ -11,6 +11,11 @@ public static class GameData
     public static float distanceBestRecord;
     public static int coin;
 
+    public static bool ingameUiOn;
+    public static bool mainMenuUiOn = true;
+    public static bool gameOverUiOn;
+    public static bool upGradeUiOn;
+
     static GameData()
     {
         magnetId = SaveLoadManager.Data.magnetId;
@@ -19,12 +24,6 @@ public static class GameData
         invincibilityId = SaveLoadManager.Data.invincibilityId;
         distanceBestRecord = SaveLoadManager.Data.distanceBestRecord;
         coin = SaveLoadManager.Data.coin;
-        Debug.Log(magnetId);
-        Debug.Log(protectId);
-        Debug.Log(coinDoubleId);
-        Debug.Log(invincibilityId);
-        Debug.Log(distanceBestRecord);
-        Debug.Log(coin);
     }
     public static void GameDataSet()
     {
@@ -34,11 +33,5 @@ public static class GameData
         invincibilityId = SaveLoadManager.Data.invincibilityId;
         distanceBestRecord = SaveLoadManager.Data.distanceBestRecord;
         coin = SaveLoadManager.Data.coin;
-        Debug.Log(magnetId);
-        Debug.Log(protectId);
-        Debug.Log(coinDoubleId);
-        Debug.Log(invincibilityId);
-        Debug.Log(distanceBestRecord);
-        Debug.Log(coin);
     }
 }

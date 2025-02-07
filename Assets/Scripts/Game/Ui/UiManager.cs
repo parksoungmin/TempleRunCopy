@@ -13,10 +13,19 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI gameOverCoinText;
     public TextMeshProUGUI inGameScoreText;
     public TextMeshProUGUI inGameCoinText;
+
     public GameObject upgradeUi;
+    public GameObject inGameUi;
+    public GameObject GameOverUi;
+    public GameObject mainMenuUi;
+
     public int score = 0;
     public int currentGameacquireCoin;
     public float distanceBestRecord;
+    private void Awake()
+    {
+        ChackSceneChange();
+    }
     private void Start()
     {
         distanceBestRecord = GameData.distanceBestRecord;
@@ -24,6 +33,7 @@ public class UiManager : MonoBehaviour
 
     public void OnButtonClickGameReStart()
     {
+        GameStartUiSet();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void Update()
@@ -63,5 +73,73 @@ public class UiManager : MonoBehaviour
         DistanceSet();
         GameOverUISet();
         BastDistanceSet();
+    }
+    public void GameStartUiSet()
+    {
+        Time.timeScale = 1f;
+        mainMenuUi.SetActive(false);
+        upgradeUi.SetActive(false);
+        inGameUi.SetActive(true);
+        GameOverUi.SetActive(false);
+        GameData.ingameUiOn = true;
+        GameData.mainMenuUiOn = false;
+        GameData.gameOverUiOn = false;
+        GameData.upGradeUiOn = false;
+    }
+    public void OnGameUiSet()
+    {
+        Time.timeScale = 0f;
+        mainMenuUi.SetActive(true);
+        upgradeUi.SetActive(false);
+        inGameUi.SetActive(false);
+        GameOverUi.SetActive(false);
+        GameData.ingameUiOn = false;
+        GameData.mainMenuUiOn = true;
+        GameData.gameOverUiOn = false;
+        GameData.upGradeUiOn = false;
+    }
+    public void OnGameOverUiSet()
+    {
+        Time.timeScale = 0f;
+        GameOver();
+        mainMenuUi.SetActive(false);
+        upgradeUi.SetActive(false);
+        inGameUi.SetActive(false);
+        GameOverUi.SetActive(true);
+        GameData.ingameUiOn = false;
+        GameData.mainMenuUiOn = false;
+        GameData.gameOverUiOn = true;
+        GameData.upGradeUiOn = false;
+    }
+    public void OnUpgradeUiSet()
+    {
+        Time.timeScale = 0f;
+        mainMenuUi.SetActive(false);
+        upgradeUi.SetActive(true);
+        inGameUi.SetActive(false);
+        GameOverUi.SetActive(false);
+        GameData.ingameUiOn = false;
+        GameData.mainMenuUiOn = false;
+        GameData.gameOverUiOn = false;
+        GameData.upGradeUiOn = true;
+    }
+    private void ChackSceneChange()
+    {
+        if(GameData.ingameUiOn)
+        {
+            GameStartUiSet();
+        } 
+        if(GameData.mainMenuUiOn)
+        {
+            OnGameUiSet();
+        }
+        if(GameData.gameOverUiOn)
+        {
+            OnGameOverUiSet();
+        }
+        if(GameData.upGradeUiOn)
+        {
+            OnUpgradeUiSet();
+        }
     }
 }

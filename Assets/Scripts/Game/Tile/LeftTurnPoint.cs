@@ -25,7 +25,6 @@ public class LeftTurnPoint : MonoBehaviour
                 {
                     player.transform.Rotate(0, playerRotate, 0);
                     player.canLeftSwipe = false;
-                    Debug.Log("충돌 (트리거)");
                     hasCollided = true; // 충돌을 한 번만 처리
                     closeWall.SetActive(true);
                     closeWall2.SetActive(false);

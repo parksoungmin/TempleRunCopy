@@ -16,14 +16,11 @@ public class GameManager : MonoBehaviour
     public int coin;
 
     public bool gameOver = false;
-
     public void Start()
     {
+        Time.timeScale = 0f;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 999;
-        scoreUi.SetActive(false);
-        inGameUi.SetActive(true);
-        uiManager = inGameUi.GetComponent<UiManager>();
         coin = GameData.coin;
     }
     public void Update()
@@ -35,8 +32,7 @@ public class GameManager : MonoBehaviour
             {
                 gameOver = false;
                 currentGameOverTime = 0f;
-                scoreUi.SetActive(true);
-                inGameUi.SetActive(false);
+                uiManager.OnGameOverUiSet();
             }
         }
     }
@@ -56,7 +52,6 @@ public class GameManager : MonoBehaviour
             player.animator.SetTrigger("Die");
             player.playerDead = true;
             coin += uiManager.currentGameacquireCoin;
-            uiManager.GameOver();
             gameOver = true;
             player.transform.position = player.transform.position;
             player.speed = 0f;

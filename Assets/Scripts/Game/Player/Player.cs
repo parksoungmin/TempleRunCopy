@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         speedDistance += deltaMagnitude;
         SpeedUP();
         lastPostion = transform.position;
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !IsJumping)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !IsJumping && !playerDead)
         {
             UnityJump = true;
         }
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour
 
     private void CheckSwipeJump()
     {
-        if (!IsJumping)
+        if (!IsJumping && !playerDead)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
@@ -221,7 +221,6 @@ public class Player : MonoBehaviour
         tiltInputX = 0;
     }
 #endif
-        Debug.Log(tiltInputX);
         Vector3 tiltMovement = new Vector3(tiltInputX * tiltSpeed, 0, 0); // z축 이동 제거
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 

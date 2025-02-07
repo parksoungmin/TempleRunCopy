@@ -90,8 +90,8 @@ Transform:
   m_GameObject: {fileID: 2940330289736636513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 4, z: 7}
-  m_LocalScale: {x: 1, y: 8, z: 15}
+  m_LocalPosition: {x: 15, y: 4, z: 6.5}
+  m_LocalScale: {x: 1, y: 8, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3071808408229591616}
@@ -156,8 +156,8 @@ Transform:
   m_GameObject: {fileID: 3856415297381608512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15, y: 4, z: 7}
-  m_LocalScale: {x: 1, y: 8, z: 15}
+  m_LocalPosition: {x: -15, y: 4, z: 6.5}
+  m_LocalScale: {x: 1, y: 8, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3071808408229591616}
@@ -583,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653304357505648194, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2924053721552777255, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_ReceiveShadows
