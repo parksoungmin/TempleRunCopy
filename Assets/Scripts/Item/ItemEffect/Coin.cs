@@ -5,7 +5,7 @@ public class Coin : MonoBehaviour
     public float rotationSpeed;
     public UiManager uiManager;
     private Player player;
-    private float magnetSpeed = 20f;
+    private float magnetSpeed = 40f;
     private bool startMagnet = false;
     private bool isCollected = false;
 
@@ -50,6 +50,15 @@ public class Coin : MonoBehaviour
         {
             trap.gameObject.SetActive(false);
             Debug.Log("°ãÃÆÁö·Õ");
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        var trap = collision.gameObject.GetComponent<Trap>();
+        if (trap)
+        {
+            trap.gameObject.SetActive(false);
+            Debug.Log("°ãÃÆÁö¶û");
         }
     }
     public void GetMagnet()

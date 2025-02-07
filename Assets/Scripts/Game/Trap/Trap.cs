@@ -12,10 +12,9 @@ public class Trap : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-
-    void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        var player = collision.gameObject.GetComponent<Player>();
+        var player = other.gameObject.GetComponent<Player>();
         if (player)
         {
             if (!dead)
@@ -40,5 +39,10 @@ public class Trap : MonoBehaviour
                 }
             }
         }
+    }
+    void OnCollisionStay(Collision collision)
+    {
+
+
     }
 }

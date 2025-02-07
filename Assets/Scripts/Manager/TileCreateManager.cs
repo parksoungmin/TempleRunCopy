@@ -129,8 +129,7 @@ public class TileCreateManager : MonoBehaviour
                     randomTrapIndex = 0;
                     trapToSpawn = trap[0];
                 }
-                var newObstacle = Instantiate(trapToSpawn, spawnPos, Quaternion.identity);
-
+                var newObstacle = Instantiate(trapToSpawn, spawnPos, newTile.rotation);
                 newObstacle.SetParent(spawnPoint.transform);
             }
         }

@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 971118374970427317}
   - component: {fileID: 2426626315786256005}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,6 +585,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2924053721552777255, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4570958768855202225, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_Size.x
       value: 2
@@ -632,6 +636,10 @@ PrefabInstance:
     - target: {fileID: 5819462430874873023, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636107656639217408, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7784020493535577829, guid: 8d9ec918c3e7d8a4baad5f034504bad0, type: 3}
       propertyPath: m_LocalScale.z

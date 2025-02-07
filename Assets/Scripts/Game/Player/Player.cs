@@ -221,7 +221,7 @@ public class Player : MonoBehaviour
         tiltInputX = 0;
     }
 #endif
-
+        Debug.Log(tiltInputX);
         Vector3 tiltMovement = new Vector3(tiltInputX * tiltSpeed, 0, 0); // z축 이동 제거
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 
@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
         if (speedDistance > speedUpDistance && speedUPCount < speedUpMaxCount)
         {
             speedUPCount++;
-            speedUpDistance += 100f;
+            speedUpDistance += 50f;
             speedDistance = 0f;
             speed += plus;
         }
