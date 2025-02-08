@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeUi : MonoBehaviour
 {
@@ -28,20 +29,48 @@ public class UpgradeUi : MonoBehaviour
     private string coinDoubleString;
     private string invincibilityString;
 
-
-    private int magnetMaxId = 1005;
-    private int protectMaxId = 2005;
-    private int coinDoubleMaxId = 3005;
-    private int invincibilityMaxId = 4005;
+    private readonly int magnetMaxId = 1005;
+    private readonly int protectMaxId = 2005;
+    private readonly int coinDoubleMaxId = 3005;
+    private readonly int invincibilityMaxId = 4005;
 
     public CoinDouble coinDouble;
     public Invincibility invincibility;
     public Protect protect;
     public Magnet magnet;
 
+    public Toggle[] magnetUpgradPoint;
+    public Toggle[] protectUpgradPoint;
+    public Toggle[] coinDoubleUpgradPoint;
+    public Toggle[] invincibilityUpgradPoint;
+
+    private int magnetCurrentToggleIndex;
+    private int protectCurrentToggleIndex;
+    private int coinDoubleCurrentToggleIndex;
+    private int invincibilityCurrentToggleIndex;
+
     private void OnEnable()
     {
         UpdateUpgrade();
+    }
+    private void Start()
+    {
+        for (int i = 0; i<magnetCurrentToggleIndex; i++)
+        {
+            magnetUpgradPoint[i].isOn = true;
+        }
+        for (int i = 0; i<protectCurrentToggleIndex; i++)
+        {
+            protectUpgradPoint[i].isOn = true;
+        }
+        for (int i = 0; i<coinDoubleCurrentToggleIndex; i++)
+        {
+            coinDoubleUpgradPoint[i].isOn = true;
+        }
+        for (int i = 0; i<invincibilityCurrentToggleIndex; i++)
+        {
+            invincibilityUpgradPoint[i].isOn = true;
+        }
     }
 
     public void OnClickUpgradeMagnet()
@@ -54,6 +83,10 @@ public class UpgradeUi : MonoBehaviour
                 GameData.coin -= magnetCost;
                 ++GameData.magnetId;
                 UpdateUpgrade();
+                for (int i = 0; i<magnetCurrentToggleIndex; i++)
+                {
+                    magnetUpgradPoint[i].isOn = true;
+                }
             }
             else
             {
@@ -75,6 +108,10 @@ public class UpgradeUi : MonoBehaviour
                 GameData.coin -= protectCost;
                 ++GameData.protectId;
                 UpdateUpgrade();
+                for (int i = 0; i<protectCurrentToggleIndex; i++)
+                {
+                    protectUpgradPoint[i].isOn = true;
+                }
             }
             else
             {
@@ -96,6 +133,10 @@ public class UpgradeUi : MonoBehaviour
                 GameData.coin -= coinDoubleCost;
                 ++GameData.coinDoubleId;
                 UpdateUpgrade();
+                for (int i = 0; i<coinDoubleCurrentToggleIndex; i++)
+                {
+                    coinDoubleUpgradPoint[i].isOn = true;
+                }
             }
             else
             {
@@ -117,6 +158,10 @@ public class UpgradeUi : MonoBehaviour
                 GameData.coin -= invincibilityCost;
                 ++GameData.invincibilityId;
                 UpdateUpgrade();
+                for (int i = 0; i<invincibilityCurrentToggleIndex; i++)
+                {
+                    invincibilityUpgradPoint[i].isOn = true;
+                }
             }
             else
             {
@@ -153,6 +198,10 @@ public class UpgradeUi : MonoBehaviour
         magnet.time = DataTableManager.UpGradeDataTable.Get(GameData.magnetId).Item_Effect;
         invincibility.time = DataTableManager.UpGradeDataTable.Get(GameData.invincibilityId).Item_Effect;
 
+        magnetCurrentToggleIndex = GameData.magnetId % 1000;
+        protectCurrentToggleIndex = GameData.protectId % 2000;
+        coinDoubleCurrentToggleIndex = GameData.coinDoubleId % 3000;
+        invincibilityCurrentToggleIndex = GameData.invincibilityId % 4000;
     }
     public void OnClickDestory()
     {
