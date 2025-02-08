@@ -33,8 +33,6 @@ public class UiManager : MonoBehaviour
 
     public void OnButtonClickGameReStart()
     {
-        GameStartUiSet();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void Update()
     {
@@ -74,7 +72,11 @@ public class UiManager : MonoBehaviour
         GameOverUISet();
         BastDistanceSet();
     }
-    public void GameStartUiSet()
+    public void OnClickChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void InGameUiSet()
     {
         Time.timeScale = 1f;
         mainMenuUi.SetActive(false);
@@ -127,7 +129,7 @@ public class UiManager : MonoBehaviour
     {
         if(GameData.ingameUiOn)
         {
-            GameStartUiSet();
+            InGameUiSet();
         } 
         if(GameData.mainMenuUiOn)
         {

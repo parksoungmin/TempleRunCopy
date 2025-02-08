@@ -13,15 +13,11 @@ public class GameManager : MonoBehaviour
     public float gameOverTime = 0f;
     public UiManager uiManager;
 
-    public int coin;
-
     public bool gameOver = false;
     public void Start()
     {
-        Time.timeScale = 0f;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 999;
-        coin = GameData.coin;
     }
     public void Update()
     {
@@ -51,7 +47,7 @@ public class GameManager : MonoBehaviour
             enemy.MoveToPlayer(player.transform.position);
             player.animator.SetTrigger("Die");
             player.playerDead = true;
-            coin += uiManager.currentGameacquireCoin;
+            GameData.coin += uiManager.currentGameacquireCoin;
             gameOver = true;
             player.transform.position = player.transform.position;
             player.speed = 0f;
@@ -62,11 +58,11 @@ public class GameManager : MonoBehaviour
 
     public void SaveGameProgress()
     {
-        SaveLoadManager.Data.magnetId = upgradeUi.magnetId;
-        SaveLoadManager.Data.protectId = upgradeUi.protectId;
-        SaveLoadManager.Data.coinDoubleId = upgradeUi.coinDoubleId;
-        SaveLoadManager.Data.invincibilityId = upgradeUi.invincibilityId;
-        SaveLoadManager.Data.coin = coin;
+        SaveLoadManager.Data.magnetId = GameData.magnetId;
+        SaveLoadManager.Data.protectId = GameData.protectId;
+        SaveLoadManager.Data.coinDoubleId = GameData.coinDoubleId;
+        SaveLoadManager.Data.invincibilityId = GameData.invincibilityId;
+        SaveLoadManager.Data.coin = GameData.coin;
         SaveLoadManager.Data.distanceBestRecord = uiManager.distanceBestRecord;
         SaveLoadManager.Save();
         GameData.GameDataSet();
