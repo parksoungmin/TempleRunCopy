@@ -20,7 +20,7 @@ public class TileCreateManager : MonoBehaviour
     private int startTrapDontCreateCount = 5;
     private List<int> TileRotation;
 
-    private float itemSpwanTime = 5f;
+    private float itemSpwanTime = 20f;
     private float currentItemSpawnTime = 0;
     private bool itemSawpn = false;
 
