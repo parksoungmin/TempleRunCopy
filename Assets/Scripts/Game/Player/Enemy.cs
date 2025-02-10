@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
     private float speed = 3f;
     private Vector3 playerPosition;
     private bool playerDie = false;
+
+    private void Start()
+    {
+    }
 
     public void MoveToPlayer(Vector3 playerPos)
     {
