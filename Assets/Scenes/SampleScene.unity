@@ -16444,8 +16444,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -16495,7 +16495,27 @@ MonoBehaviour:
   tile: {fileID: 2929674911351229998, guid: ccbf376219699e24582fe8059e3da4e1, type: 3}
   tiles:
   - {fileID: 1206894562907939571, guid: 3c8a66a7a51cafc409af6216138fe9a8, type: 3}
+  - {fileID: 1206894562907939571, guid: 16a20f954655c364783ab78f3efbb6d6, type: 3}
+  - {fileID: 1206894562907939571, guid: baec3162310a50449bff924be726a936, type: 3}
+  - {fileID: 1206894562907939571, guid: 2184831b305a65b4fb4b24cac6f6b8cb, type: 3}
+  - {fileID: 1206894562907939571, guid: 4fbee157c1fa75c41987881f3d777726, type: 3}
+  - {fileID: 1206894562907939571, guid: fa7a4008888a31b4086e7226ddabb27c, type: 3}
+  - {fileID: 1206894562907939571, guid: a56651c83e296764c955339fdb405298, type: 3}
+  - {fileID: 1206894562907939571, guid: e99921e7e33dde447a532643d8d01df9, type: 3}
+  - {fileID: 1206894562907939571, guid: 22f3b8fccb04bdd46a1d2416e4ea7b81, type: 3}
+  - {fileID: 1206894562907939571, guid: d67a3c81475d3c243a71b2193627479f, type: 3}
+  - {fileID: 1206894562907939571, guid: 1254cab625d685049b6e4b7995ca38b4, type: 3}
   - {fileID: 6941497983478609905, guid: d2cbde0054171ac44b39db5b41d89f43, type: 3}
+  - {fileID: 6941497983478609905, guid: 01aa4860017a264439e263569d68f75d, type: 3}
+  - {fileID: 6941497983478609905, guid: 9e3ba406983c948489f406e11f0a6350, type: 3}
+  - {fileID: 6941497983478609905, guid: f0a07531ff08f3a43bc366aa3f685a8d, type: 3}
+  - {fileID: 6941497983478609905, guid: e4fdaf4fb6e315b40af66f7315b26234, type: 3}
+  - {fileID: 6941497983478609905, guid: 17b89b52678c76e418564ca379dec147, type: 3}
+  - {fileID: 6941497983478609905, guid: a471ed629bdd77d4d81189994c93d74d, type: 3}
+  - {fileID: 6941497983478609905, guid: 8dcefd74bd0b4564589bfd71cbc2ca95, type: 3}
+  - {fileID: 6941497983478609905, guid: 4c47359f617ea604aaba2361c8f7397a, type: 3}
+  - {fileID: 6941497983478609905, guid: 08d8433411ff8e24998087a131272eb9, type: 3}
+  - {fileID: 6941497983478609905, guid: a0d37220774cb154cba19370f04ce154, type: 3}
   trap:
   - {fileID: 2667351444718383424, guid: 3f4758ea1a39ee24a9feb481a022780e, type: 3}
   - {fileID: 2912082671224198585, guid: d2117ee92967a1945b6d38fe0eda346d, type: 3}
@@ -22303,14 +22323,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9087535, g: 1, b: 0.7216981, a: 0.6392157}
+  m_Color: {r: 0.9087535, g: 1, b: 0.7216981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a043a98f08ffce640a1a1329b7e56461, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46223ba009268c94c935ed31f5c3fae5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23026,7 +23046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6001123820973375988, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6734443649121783806, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_LocalPosition.x
