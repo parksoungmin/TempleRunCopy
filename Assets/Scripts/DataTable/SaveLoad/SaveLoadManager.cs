@@ -44,6 +44,8 @@ public static class SaveLoadManager
             Data.invincibilityId = 4001;
             Data.coin = 0;
             Data.distanceBestRecord = 0f;
+            Data.sfxSound = 0.001f;
+            Data.bgmSound = 0.001f;
             Save();
         }
     }

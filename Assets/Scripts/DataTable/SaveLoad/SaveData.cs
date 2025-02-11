@@ -18,6 +18,8 @@ public class SaveDataV1 : SaveData
     public int invincibilityId;
     public int coin;
     public float distanceBestRecord;
+    public float sfxSound;
+    public float bgmSound;
 
     public SaveDataV1()
     {

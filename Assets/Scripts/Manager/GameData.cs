@@ -16,6 +16,9 @@ public static class GameData
     public static bool gameOverUiOn;
     public static bool upGradeUiOn;
 
+    public static float sfxSound;
+    public static float bgmSound;
+
     static GameData()
     {
         magnetId = SaveLoadManager.Data.magnetId;

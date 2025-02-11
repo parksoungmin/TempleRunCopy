@@ -32,7 +32,12 @@ public class Coin : MonoBehaviour
         if (player2 && !isCollected)
         {
             isCollected = true;
-            Destroy(gameObject);
+            AudioSource getCoinSound = GetComponent<AudioSource>();
+            getCoinSound.Play();
+            GetComponent<Collider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false; 
+            Destroy(gameObject, getCoinSound.clip.length);
+
             if (player.coinDouble.gameObject.activeSelf)
             {
                 uiManager.AddCoin(2);
