@@ -116,18 +116,18 @@ public class TileCreateManager : MonoBehaviour
 
                 if (Mathf.Abs(relativeX) < 1f && randomTrapIndex == 0)
                 {
-                    randomTrapIndex = Random.Range(1, trap.Length);
+                    randomTrapIndex = Random.Range(2, trap.Length);
                     trapToSpawn = trap[randomTrapIndex];
                 }
                 else if (relativeX < 0)
                 {
                     randomTrapIndex = 0;
-                    trapToSpawn = trap[0];
+                    trapToSpawn = trap[Random.Range(0, trap.Length - 1)];
                 }
                 else
                 {
                     randomTrapIndex = 0;
-                    trapToSpawn = trap[0];
+                    trapToSpawn = trap[Random.Range(0, trap.Length - 1)];
                 }
                 var newObstacle = Instantiate(trapToSpawn, spawnPos, newTile.rotation);
                 newObstacle.SetParent(spawnPoint.transform);

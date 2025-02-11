@@ -14,7 +14,6 @@ public class SideTileDelete: MonoBehaviour
             {
                 Destroy(transform.parent.gameObject, destroyTime);
                 GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
-                Debug.Log("ªÁ¿ÃµÂ");
                 active = true;
             }
         }
