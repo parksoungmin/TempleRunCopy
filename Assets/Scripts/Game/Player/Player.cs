@@ -146,6 +146,8 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             IsJumping = true;
             animator.SetTrigger("Jumping");
+            gameObject.GetComponent<AudioSource>().Play();
+
         }
         Vector3 forwardMovement = transform.forward * speed;
 
@@ -175,6 +177,7 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
+            gameObject.GetComponent<AudioSource>().Play();
         }
 
         IsJumping = true;

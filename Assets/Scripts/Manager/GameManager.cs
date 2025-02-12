@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
             currentGameOverTime += Time.deltaTime;
             if (currentGameOverTime > gameOverTime)
             {
+                enemy.GetComponent<AudioSource>().Stop();
                 gameOver = false;
                 currentGameOverTime = 0f;
                 uiManager.OnGameOverUiSet();
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
             player.speed = 0f;
             player.dieEffect.SetActive(true);
             player.tiltSpeed = 0f;
+            gameObject.GetComponent<AudioSource>().Play();
             SaveGameProgress();
         }
     }

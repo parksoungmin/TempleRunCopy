@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
                 foreach (Animator animator in animators)
                 {
                     animator.SetTrigger("Attack");
+                    gameObject.GetComponent<AudioSource>().Play();
                 }
             }
         }
