@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             player.transform.position = player.transform.position;
             player.speed = 0f;
+            player.dieEffect.SetActive(true);
             player.tiltSpeed = 0f;
             SaveGameProgress();
         }

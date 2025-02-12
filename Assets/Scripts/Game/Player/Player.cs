@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public Invincibility invincibility;
     public CoinDouble coinDouble;
     public Animator animator;
+    public GameObject dieEffect;
 
     private int speedUPCount = 0;
     public int speedUpMaxCount = 10;
