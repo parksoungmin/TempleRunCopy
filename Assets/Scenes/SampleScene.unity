@@ -5005,9 +5005,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7029b1583a4b548aca250d0bd0b75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 672f981e3333e59448f4a2dcfb7e8d73, type: 2}
-  bgmSlider: {fileID: 2062862275}
-  sfxSlider: {fileID: 1157255580}
+  audioMixer: {fileID: 0}
+  bgmSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
 --- !u!1 &388127706
 GameObject:
   m_ObjectHideFlags: 0
@@ -12644,10 +12644,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 48972212}
   m_HandleRect: {fileID: 219743596}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -22217,10 +22217,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1763952419}
   m_HandleRect: {fileID: 984845325}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.001
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23041,6 +23041,10 @@ PrefabInstance:
     - target: {fileID: 5327151478542074946, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_Mass
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571724056219772459, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6001123820973375988, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: m_Name

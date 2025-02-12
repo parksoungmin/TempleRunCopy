@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
 
     public void MoveToPlayer(Vector3 playerPos)
     {
-        Debug.Log("»£√‚");
         playerPosition = playerPos;
         playerDie = true;
     }

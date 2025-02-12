@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &8598313305827149869
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &1584121389794262515
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -423,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &7887958560431968595
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -573,6 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &8730209494954975989
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -765,6 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &374987941848233591
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -915,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &4573147511818456279
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1065,6 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &3985592538208938074
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1215,6 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &1839627975938295990
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1365,6 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &4267564007470637908
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1515,6 +1524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &3573269853096197376
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1665,6 +1675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   uiManager: {fileID: 0}
+  coinParticle: {fileID: 432992178517897399, guid: bd09ea81e46694f46a6e2f42a85f9bf3, type: 3}
 --- !u!54 &8562193707226644470
 Rigidbody:
   m_ObjectHideFlags: 0

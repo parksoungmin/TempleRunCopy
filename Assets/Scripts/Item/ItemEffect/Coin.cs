@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     private float magnetSpeed = 40f;
     private bool startMagnet = false;
     private bool isCollected = false;
+    public ParticleSystem coinParticle;
 
     private void Start()
     {
@@ -33,6 +34,10 @@ public class Coin : MonoBehaviour
         {
             isCollected = true;
             Destroy(gameObject);
+            var newObstacle = Instantiate(coinParticle, transform.position, transform.rotation);
+            newObstacle.Play();
+            Destroy(newObstacle,1f);
+            coinParticle.Play();
             if (player.coinDouble.gameObject.activeSelf)
             {
                 uiManager.AddCoin(2);
