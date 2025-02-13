@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed = 10f;  // 걷는 속도
-    public float swipeMovement = 2f;  // 좌우 스와이프 속도
+    public float swipeMovement = 1f;  // 좌우 스와이프 속도
     public float playerRotate = 90;
     public float tiltSpeed = 3f;
 

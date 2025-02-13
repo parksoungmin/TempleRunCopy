@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private float currentGameOverTime = 0f;
     public float gameOverTime = 0f;
     public UiManager uiManager;
+    public SoundManager soundManager;
 
     public bool gameOver = false;
     public void Start()
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
             player.dieEffect.SetActive(true);
             player.tiltSpeed = 0f;
             gameObject.GetComponent<AudioSource>().Play();
+            soundManager.gameObject.GetComponent<AudioSource>().Stop();
             SaveGameProgress();
         }
     }

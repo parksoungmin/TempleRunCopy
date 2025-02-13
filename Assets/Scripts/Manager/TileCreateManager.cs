@@ -17,7 +17,7 @@ public class TileCreateManager : MonoBehaviour
     private Vector3 nextCreatePoint;
     private Quaternion nextCreateTileRotation;
     private int tileCreateCount = 0;
-    private int startTrapDontCreateCount = 5;
+    private int startTrapDontCreateCount = 8;
     private List<int> TileRotation;
 
     private float itemSpwanTime = 20f;
