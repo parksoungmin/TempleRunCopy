@@ -8,7 +8,7 @@ public class CoinDouble : MonoBehaviour
     private float currentTime = 0f;
     private void Awake()
     {
-        time = DataTableManager.UpGradeDataTable.Get(GameData.coinDoubleId).Item_Effect;
+        time = DataTableManager.UpGradeDataTable.Get(GameData.coinDoubleId).Item_Effect * 2;
     }
     private void Update()
     {

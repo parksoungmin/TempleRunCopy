@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    private float speed = 10f;
+    private float speed = 5f;
     private Vector3 playerPosition;
     private bool playerDie = false;
 

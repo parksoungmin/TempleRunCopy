@@ -16,7 +16,7 @@ public class Protect : MonoBehaviour
 
     private void Start()
     {
-        time = DataTableManager.UpGradeDataTable.Get(GameData.protectId).Item_Effect;
+        time = DataTableManager.UpGradeDataTable.Get(GameData.protectId).Item_Effect * 2;
     }
     private void Update()
     {

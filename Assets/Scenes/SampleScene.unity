@@ -3977,7 +3977,7 @@ MonoBehaviour:
     m_Hold: 0
     m_Blend:
       m_Style: 1
-      m_Time: 1.5
+      m_Time: 2.5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -7993,7 +7993,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -2821256087138489699, guid: 672f981e3333e59448f4a2dcfb7e8d73, type: 2}
   m_audioClip: {fileID: 8300000, guid: bf4f7f4c1474f5d42bd0906e07f4bd79, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17222,7 +17222,7 @@ MonoBehaviour:
   inGameUi: {fileID: 557425079}
   enemy: {fileID: 2126349172204694063}
   upgradeUi: {fileID: 1853045819}
-  gameOverTime: 2
+  gameOverTime: 4
   uiManager: {fileID: 897097372}
   gameOver: 0
 --- !u!82 &1471594807
@@ -23857,7 +23857,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -9031029135145134213, guid: 672f981e3333e59448f4a2dcfb7e8d73, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0f2d836cecc205442b386dd996fb7ed3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -24057,9 +24057,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: plus
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: dieEffect
       value: 
       objectReference: {fileID: 1129395053}
+    - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
+      propertyPath: tiltSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956554163785434968, guid: 7a10fa43166ca214899b13322044cf31, type: 3}
       propertyPath: invincibility
       value: 

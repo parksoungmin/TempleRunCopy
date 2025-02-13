@@ -9,7 +9,7 @@ public class Invincibility : MonoBehaviour
 
     private void Start()
     {
-        time = DataTableManager.UpGradeDataTable.Get(GameData.invincibilityId).Item_Effect;
+        time = DataTableManager.UpGradeDataTable.Get(GameData.invincibilityId).Item_Effect * 2;
     }
     private void Update()
     {

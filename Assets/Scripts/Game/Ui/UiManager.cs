@@ -86,7 +86,7 @@ public class UiManager : MonoBehaviour
     }
     public void InGameUiSet()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 2f;
         mainMenuUi.SetActive(false);
         upgradeUi.SetActive(false);
         inGameUi.SetActive(true);
@@ -148,7 +148,7 @@ public class UiManager : MonoBehaviour
     public void OffPauseUiSet()
     {
         pauseUi.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 2f;
     }
     public void OnOptionUiSet()
     {
