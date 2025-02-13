@@ -9,20 +9,24 @@ public class SoundManager: MonoBehaviour
 
     private void Start()
     {
-        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(SaveLoadManager.Data.sfxSound)*20);
-        audioMixer.SetFloat("BGM_Volume", Mathf.Log10(SaveLoadManager.Data.bgmSound)*20);
+        SoundOptionSet();
     }
 
     public void SFXVolumSet(float vol)
     {
-        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(vol)*20);
         SaveLoadManager.Data.sfxSound = vol;
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(vol)*20);
         SaveLoadManager.Save();
     }
     public void BGMVolumSet(float vol)
     {
-        audioMixer.SetFloat("BGM_Volume", Mathf.Log10(vol)*20);
         SaveLoadManager.Data.bgmSound = vol;
+        audioMixer.SetFloat("BGM_Volume", Mathf.Log10(vol)*20);
         SaveLoadManager.Save();
+    }
+    public void SoundOptionSet()
+    {
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(SaveLoadManager.Data.sfxSound) * 20);
+        audioMixer.SetFloat("BGM_Volume", Mathf.Log10(SaveLoadManager.Data.bgmSound) * 20);
     }
 }
