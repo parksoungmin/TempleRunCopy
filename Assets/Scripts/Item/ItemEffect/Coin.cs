@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI.Extensions.CasualGame;
 
 public class Coin : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Coin : MonoBehaviour
     private float magnetSpeed = 40f;
     private bool startMagnet = false;
     private bool isCollected = false;
+    public ParticleSystem coinParticle;
 
     private void Start()
     {
@@ -34,9 +36,13 @@ public class Coin : MonoBehaviour
             isCollected = true;
             AudioSource getCoinSound = GetComponent<AudioSource>();
             getCoinSound.Play();
+            var particle = Instantiate(coinParticle,transform.position, transform.rotation);
+            particle.Play();
+            Destroy(particle.gameObject, 2f);
             GetComponent<Collider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false; 
             Destroy(gameObject, getCoinSound.clip.length);
+
 
             if (player.coinDouble.gameObject.activeSelf)
             {

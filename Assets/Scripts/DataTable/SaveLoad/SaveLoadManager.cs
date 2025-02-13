@@ -66,7 +66,6 @@ public static class SaveLoadManager
         var path = Path.Combine(SaveDirectory, SaveFileName[slot]);
         var json = JsonConvert.SerializeObject(Data, settings);
         File.WriteAllText(path, json);
-        Debug.Log("Save");
         return true;
     }
 

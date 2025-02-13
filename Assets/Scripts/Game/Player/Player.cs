@@ -182,6 +182,7 @@ public class Player : MonoBehaviour
 
         IsJumping = true;
     }
+
     private void MoveWithTilt()
     {
         float tiltInput = Input.acceleration.x;
@@ -192,6 +193,7 @@ public class Player : MonoBehaviour
 
         rb.MovePosition(rb.position + moveDirection * Time.deltaTime);
     }
+
     private Vector3 GetMoveDirection()
     {
         float tiltInputX = 0f; // 수평 이동

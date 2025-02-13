@@ -74,19 +74,21 @@ public class TileCreateManager : MonoBehaviour
         {
             newTile = Instantiate(tile, nextCreatePoint, nextCreateTileRotation);
         }
+
         if (startTrapDontCreateCount < tileCreateCount)
         {
             startTrapDontCreateCount = 0;
             if (tileCreateCount > safeArray)
             {
                 SpawnObstacle(newTile);
-                SpawnCoint(newTile);
+                SpawnCoin(newTile);
                 if (itemSawpn)
                 {
                     SpawnItem(newTile);
                 }
             }
         }
+
         var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
         nextCreatePoint = nextTile.position;
         nextCreateTileRotation = nextTile.rotation;
@@ -134,7 +136,7 @@ public class TileCreateManager : MonoBehaviour
             }
         }
     }
-    void SpawnCoint(Transform newTile)
+    void SpawnCoin(Transform newTile)
     {
         var coinSpawnPoints = new List<GameObject>();
 
