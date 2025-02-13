@@ -12,22 +12,17 @@ public class UpgradeUi : MonoBehaviour
 
     public TextMeshProUGUI coinText;
 
-    public TextMeshProUGUI magnetText;
-    public TextMeshProUGUI protectText;
-    public TextMeshProUGUI coinDoubleText;
-    public TextMeshProUGUI invincibilityText;
-
     public TextMeshProUGUI magnetCostText;
     public TextMeshProUGUI protectCostText;
     public TextMeshProUGUI coinDoubleCostText;
     public TextMeshProUGUI invincibilityCostText;
 
-    public GameManager gameManager;
+    public TextMeshProUGUI magnetExplanationText;
+    public TextMeshProUGUI protectExplanationText;
+    public TextMeshProUGUI coinDoubleExplanationText;
+    public TextMeshProUGUI invincibilityExpanationText;
 
-    private string magnetString;
-    private string protectString;
-    private string coinDoubleString;
-    private string invincibilityString;
+    public GameManager gameManager;
 
     private readonly int magnetMaxId = 1005;
     private readonly int protectMaxId = 2005;
@@ -176,17 +171,6 @@ public class UpgradeUi : MonoBehaviour
     private void UpdateUpgrade()
     {
         gameManager.SaveGameProgress();
-
-        magnetString = DataTableManager.UpGradeDataTable.Get(GameData.magnetId).Item_Name;
-        invincibilityString = DataTableManager.UpGradeDataTable.Get(GameData.invincibilityId).Item_Name;
-        coinDoubleString = DataTableManager.UpGradeDataTable.Get(GameData.coinDoubleId).Item_Name;
-        protectString = DataTableManager.UpGradeDataTable.Get(GameData.protectId).Item_Name;
-
-        magnetText.text = magnetString;
-        invincibilityText.text = invincibilityString;
-        coinDoubleText.text = coinDoubleString;
-        protectText.text = protectString;
-
         magnetCostText.text = DataTableManager.UpGradeDataTable.Get(GameData.magnetId).Cost_Value.ToString();
         protectCostText.text = DataTableManager.UpGradeDataTable.Get(GameData.protectId).Cost_Value.ToString();
         coinDoubleCostText.text = DataTableManager.UpGradeDataTable.Get(GameData.coinDoubleId).Cost_Value.ToString();
@@ -202,6 +186,12 @@ public class UpgradeUi : MonoBehaviour
         protectCurrentToggleIndex = GameData.protectId % 2000;
         coinDoubleCurrentToggleIndex = GameData.coinDoubleId % 3000;
         invincibilityCurrentToggleIndex = GameData.invincibilityId % 4000;
+
+        magnetExplanationText.text = $"The player gains magnetic powers. \nLasts for {magnet.time} seconds";
+        protectExplanationText.text = $"Prevents player death once and is \nactive for {protect.time} seconds";
+        coinDoubleExplanationText.text = $"Coins earned by the player are doubled and \nlast for {coinDouble.time} seconds.";
+        invincibilityExpanationText.text = $"The player becomes invincible. \nLasts for {invincibility.time} seconds.";
+
     }
     public void OnClickDestory()
     {
