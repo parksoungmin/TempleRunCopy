@@ -11,6 +11,11 @@ public class Coin : MonoBehaviour
     private bool isCollected = false;
     public ParticleSystem coinParticle;
 
+    private float obstacleDeleteTime = 1f;
+    private float obstacleDeleteCurrentTime = 0f;
+
+    private bool endObstacleDelete = false;
+
     private void Start()
     {
         rotationSpeed = 60f;
@@ -43,7 +48,6 @@ public class Coin : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false; 
             Destroy(gameObject, getCoinSound.clip.length);
 
-
             if (player.coinDouble.gameObject.activeSelf)
             {
                 uiManager.AddCoin(2);
@@ -53,11 +57,17 @@ public class Coin : MonoBehaviour
                 uiManager.AddCoin(1);
             }
         }
+        
+        obstacleDeleteCurrentTime = Time.deltaTime;
+        if(obstacleDeleteCurrentTime < obstacleDeleteTime)
+        {
+            endObstacleDelete = true;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         var trap = other.gameObject.GetComponent<Trap>();
-        if (trap)
+        if (trap && !endObstacleDelete)
         {
             trap.gameObject.SetActive(false);
         }
@@ -65,7 +75,7 @@ public class Coin : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         var trap = collision.gameObject.GetComponent<Trap>();
-        if (trap)
+        if (trap && !endObstacleDelete)
         {
             trap.gameObject.SetActive(false);
         }

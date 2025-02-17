@@ -253,14 +253,13 @@ public class Player : MonoBehaviour
     bool IsWallDetected(Vector3 direction)
     {
         RaycastHit hit;
-        // 지정된 방향으로 레이캐스트
         if (Physics.Raycast(transform.position, direction, out hit, raycastDistance))
         {
             if (hit.collider != null && hit.collider.CompareTag("Wall"))
             {
-                return true; // 벽이 감지됨
+                return true;
             }
         }
-        return false; // 벽이 감지되지 않음
+        return false;
     }
 }
