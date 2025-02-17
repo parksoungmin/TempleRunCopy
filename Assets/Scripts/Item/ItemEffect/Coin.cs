@@ -43,10 +43,8 @@ public class Coin : MonoBehaviour
             getCoinSound.Play();
             var particle = Instantiate(coinParticle,transform.position, transform.rotation);
             particle.Play();
-            Destroy(particle.gameObject, 2f);
-            GetComponent<Collider>().enabled = false;
-            GetComponent<MeshRenderer>().enabled = false; 
-            Destroy(gameObject, getCoinSound.clip.length);
+            particle.gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
             if (player.coinDouble.gameObject.activeSelf)
             {

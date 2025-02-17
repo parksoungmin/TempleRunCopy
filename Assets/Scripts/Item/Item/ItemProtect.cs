@@ -10,7 +10,7 @@ public class ItemProtect : MonoBehaviour
         var player = other.gameObject.GetComponent<Player>();
         if (player)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             player.protect.OnProtect();
         }
     }

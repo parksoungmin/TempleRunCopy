@@ -4443,7 +4443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6097779538034126439, guid: b6d3e2e4b8df2964eb3dfce561902f3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8958222200436605837, guid: b6d3e2e4b8df2964eb3dfce561902f3e, type: 3}
       propertyPath: m_LocalScale.x
@@ -17176,7 +17176,7 @@ MonoBehaviour:
   - {fileID: 6941497983478609905, guid: 4c47359f617ea604aaba2361c8f7397a, type: 3}
   - {fileID: 6941497983478609905, guid: 08d8433411ff8e24998087a131272eb9, type: 3}
   - {fileID: 6941497983478609905, guid: a0d37220774cb154cba19370f04ce154, type: 3}
-  trap:
+  traps:
   - {fileID: 2667351444718383424, guid: 3f4758ea1a39ee24a9feb481a022780e, type: 3}
   - {fileID: 2286355246964911857, guid: 1b9dbc6e3cfe64942806c01b756fe384, type: 3}
   - {fileID: 2912082671224198585, guid: d2117ee92967a1945b6d38fe0eda346d, type: 3}
@@ -17190,6 +17190,9 @@ MonoBehaviour:
   - {fileID: 2908538169064600819, guid: 722984012b8999a4ca759331412bb63d, type: 3}
   createPoint: {x: 0, y: 0, z: -5}
   startSpawnNum: 20
+  tilesIndex: 0
+  coinsIndex: 0
+  itemsIndex: 0
 --- !u!4 &1471594805
 Transform:
   m_ObjectHideFlags: 0

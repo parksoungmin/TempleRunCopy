@@ -2,21 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideTileDelete: MonoBehaviour
+public class SideTileDelete : MonoBehaviour
 {
-    private readonly float destroyTime = 1f;
-    private bool active = false;
+    public bool active = false;
+    private void OnEnable()
+    {
+        active = false;
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<Player>())
         {
             if (!active)
             {
-                Destroy(transform.parent.gameObject, destroyTime);
-                GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
+                // 타일을 풀로 반환 (Destroy 대신 사용)
+                GameObject tileParent = transform.parent.gameObject;
+                TileCreateManager tileCreateManager = GameObject.FindObjectOfType<TileCreateManager>();
+                tileCreateManager.ReturnTilesToPool(tileParent);
+                tileCreateManager.SpawnNextTile();
+
                 active = true;
             }
         }
     }
-
 }

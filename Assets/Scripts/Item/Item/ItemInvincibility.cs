@@ -9,7 +9,7 @@ public class ItemInvincibility : MonoBehaviour
         var player = other.gameObject.GetComponent<Player>();
         if (player)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             player.invincibility.OnInvincibility();
         }
     }

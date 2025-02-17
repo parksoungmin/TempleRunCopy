@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class TileDelete : MonoBehaviour
 {
-    private readonly float destroyTime = 1f;
-    private bool active = false;
+    public bool active = false;
+    private void OnEnable()
+    {
+        active = false;
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.GetComponent<Player>())
         {
             if (!active)
             {
-                Destroy(transform.parent.parent.gameObject, destroyTime);
-                GameObject.FindObjectOfType<TileCreateManager>().SpawnNextTile();
+                GameObject tileParent = transform.parent.parent.gameObject;
+                TileCreateManager tileCreateManager = GameObject.FindObjectOfType<TileCreateManager>();
+
+                tileCreateManager.ReturnTileToPool(tileParent);
+         
+                tileCreateManager.SpawnNextTile();
                 active = true;
             }
         }
