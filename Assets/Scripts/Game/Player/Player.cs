@@ -67,8 +67,7 @@ public class Player : MonoBehaviour
             }
         }
         //CheckHeight();
-        //MoveWithTilt(); 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
         {
             swipeTimeAccum = 0;
@@ -181,17 +180,6 @@ public class Player : MonoBehaviour
         }
 
         IsJumping = true;
-    }
-
-    private void MoveWithTilt()
-    {
-        float tiltInput = Input.acceleration.x;
-
-        Vector3 tiltMovement = new Vector3(tiltInput * tiltSpeed, 0, 0);
-
-        Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
-
-        rb.MovePosition(rb.position + moveDirection * Time.deltaTime);
     }
 
     private Vector3 GetMoveDirection()
