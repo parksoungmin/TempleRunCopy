@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StartMap : MonoBehaviour
 {
-    float deleteTime = 0;
-    float deleteCurrentTime = 5;
+    private float deleteTime = 0;
+    private readonly float deleteCurrentTime = 10f;
     void Update()
     {
         deleteTime += Time.deltaTime;

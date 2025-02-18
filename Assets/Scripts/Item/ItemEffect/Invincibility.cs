@@ -13,7 +13,7 @@ public class Invincibility : MonoBehaviour
     }
     private void Update()
     {
-        //currentTime += Time.deltaTime;
+        currentTime += Time.deltaTime;
         if (time < currentTime)
         {
             currentTime = 0;

@@ -39,8 +39,11 @@ public class Player : MonoBehaviour
     public int speedUpMaxCount = 10;
     public float plus = 1.5f;
 
-    private float isTurnTime = 2f;
+    private readonly float isTurnTime = 4f;
     private float isTurnCurrentTime = 0f;
+
+    private float tiltInputX = 0f;
+    private float filteredTiltInputX = 0f;
 
     private void Awake()
     {
@@ -184,8 +187,6 @@ public class Player : MonoBehaviour
 
     private Vector3 GetMoveDirection()
     {
-        float tiltInputX = 0f; // 수평 이동
-
         // 회전 후의 방향을 기준으로 벽 감지
         Vector3 forwardDirection = transform.forward; // 현재 방향
         Vector3 rightDirection = transform.right; // 현재 오른쪽 방향
@@ -215,7 +216,12 @@ public class Player : MonoBehaviour
         tiltInputX = 0;
     }
 #endif
-        Vector3 tiltMovement = new Vector3(tiltInputX * tiltSpeed, 0, 0); // z축 이동 제거
+
+        // 로우 패스 필터 적용 (평균적인 필터링)
+        float smoothingFactor = 0.1f; // 필터의 강도 (0과 1 사이의 값으로 조절, 0은 빠르고, 1은 느림)
+        filteredTiltInputX = Mathf.Lerp(filteredTiltInputX, tiltInputX, smoothingFactor);
+
+        Vector3 tiltMovement = new Vector3(filteredTiltInputX * tiltSpeed, 0, 0); // z축 이동 제거
         Vector3 moveDirection = Quaternion.Euler(0, transform.eulerAngles.y, 0) * tiltMovement;
 
         return moveDirection;

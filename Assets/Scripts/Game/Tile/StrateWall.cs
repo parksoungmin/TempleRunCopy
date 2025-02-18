@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class StrateWall : MonoBehaviour
 {
-    public float waitTime = 2.0f;
+    public float waitTime = 4.0f;
     public GameManager gameManager;
     private Player player;
-    private bool dead = false;
+    private readonly bool dead = false;
 
     private void Awake()
     {

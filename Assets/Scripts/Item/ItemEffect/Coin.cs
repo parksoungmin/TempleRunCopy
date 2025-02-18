@@ -19,6 +19,8 @@ public class Coin : MonoBehaviour
     private void Start()
     {
         rotationSpeed = 60f;
+        endObstacleDelete = false;
+        obstacleDeleteCurrentTime = 0f;
         uiManager = FindObjectOfType<UiManager>();
         player = FindObjectOfType<Player>();
     }
@@ -58,8 +60,8 @@ public class Coin : MonoBehaviour
             }
         }
 
-        obstacleDeleteCurrentTime = Time.deltaTime;
-        if (obstacleDeleteCurrentTime < obstacleDeleteTime)
+        obstacleDeleteCurrentTime += Time.deltaTime;
+        if (obstacleDeleteCurrentTime > obstacleDeleteTime)
         {
             endObstacleDelete = true;
         }
@@ -69,7 +71,7 @@ public class Coin : MonoBehaviour
         var trap = other.gameObject.GetComponent<Trap>();
         if (trap && !endObstacleDelete)
         {
-            trap.gameObject.SetActive(false);
+            Destroy(trap.gameObject);
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -77,7 +79,7 @@ public class Coin : MonoBehaviour
         var trap = collision.gameObject.GetComponent<Trap>();
         if (trap && !endObstacleDelete)
         {
-            trap.gameObject.SetActive(false);
+            Destroy(trap.gameObject);
         }
     }
     public void GetMagnet()
