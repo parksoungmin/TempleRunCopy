@@ -14,5 +14,6 @@ public class ItemMagnet : MonoBehaviour
             player.magnet.OnMagnet();
         }
     }
+
 }
 

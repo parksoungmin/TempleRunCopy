@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour
     private bool isCollected = false;
     public ParticleSystem coinParticle;
 
-    private float obstacleDeleteTime = 1f;
+    private readonly float obstacleDeleteTime = 1f;
     private float obstacleDeleteCurrentTime = 0f;
 
     private bool endObstacleDelete = false;
@@ -41,10 +41,12 @@ public class Coin : MonoBehaviour
             isCollected = true;
             AudioSource getCoinSound = GetComponent<AudioSource>();
             getCoinSound.Play();
-            var particle = Instantiate(coinParticle,transform.position, transform.rotation);
+            var particle = Instantiate(coinParticle, transform.position, transform.rotation);
             particle.Play();
-            particle.gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            Destroy(particle.gameObject, 2f);
+            GetComponent<Collider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject, getCoinSound.clip.length);
 
             if (player.coinDouble.gameObject.activeSelf)
             {
@@ -55,9 +57,9 @@ public class Coin : MonoBehaviour
                 uiManager.AddCoin(1);
             }
         }
-        
+
         obstacleDeleteCurrentTime = Time.deltaTime;
-        if(obstacleDeleteCurrentTime < obstacleDeleteTime)
+        if (obstacleDeleteCurrentTime < obstacleDeleteTime)
         {
             endObstacleDelete = true;
         }
@@ -81,5 +83,12 @@ public class Coin : MonoBehaviour
     public void GetMagnet()
     {
         startMagnet = true;
+    }
+    private void OnTransformParentChanged()
+    {
+        if (transform.parent != null && !transform.parent.gameObject.activeSelf)
+        {
+            Destroy(gameObject);
+        }
     }
 }

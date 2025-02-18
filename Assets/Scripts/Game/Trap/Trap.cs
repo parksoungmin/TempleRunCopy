@@ -7,8 +7,7 @@ public class Trap : MonoBehaviour
     public float waitTime = 2.0f;
     public GameManager gameManager;
     private bool dead = false;
-
-    private void Awake()
+private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -42,7 +41,6 @@ public class Trap : MonoBehaviour
     }
     void OnCollisionStay(Collision collision)
     {
-
 
     }
 }
