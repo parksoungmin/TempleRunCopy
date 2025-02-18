@@ -121,11 +121,13 @@ public class TileCreateManager : MonoBehaviour
 
         if (obstacleSpawnPoints.Count > 0)
         {
-            float trapSpawnChance = 0.4f;
+            Debug.Log("호출");
+            float trapSpawnChance = 0.3f;
             float randomValue = Random.Range(0f, 1f);
 
             if (randomValue <= trapSpawnChance)
             {
+                Debug.Log("함정 생성");
                 var spawnPoint = obstacleSpawnPoints[Random.Range(0, obstacleSpawnPoints.Count)];
                 var spawnPos = spawnPoint.transform.position;
 
@@ -133,34 +135,30 @@ public class TileCreateManager : MonoBehaviour
                 Vector3 tileCenter = newTile.position;
                 float relativeX = spawnPos.x - tileCenter.x;
 
-                Transform trapToSpawn = null;
+                // randomTrapIndex 초기화 (정확한 인덱스를 사용)
+                int randomTrapIndex = -1;
 
-                if (Mathf.Abs(relativeX) < 1f && randomTrapIndex == 0)
+                if (Mathf.Abs(relativeX) < 1f)
                 {
                     randomTrapIndex = 2;
-                    trapToSpawn = traps[randomTrapIndex];
                 }
                 else if (relativeX < 0)
                 {
-                    randomTrapIndex = 0;
-                    trapToSpawn = traps[Random.Range(0, traps.Length - 1)]; // 첫 번째 트랩 제외하고 선택
+                    randomTrapIndex = Random.Range(0, 1);
                 }
                 else
                 {
-                    randomTrapIndex = 0;
-                    trapToSpawn = traps[Random.Range(0, traps.Length - 1)]; // 첫 번째 트랩 제외하고 선택
+                    randomTrapIndex = Random.Range(0, 1);
                 }
 
                 // 오브젝트 풀에서 트랩을 꺼냄
-                trapToSpawn = trapPool.GetObject(randomTrapIndex);
-
+                Transform trapToSpawn = trapPool.GetObject(randomTrapIndex);
                 // 선택한 트랩을 설정
                 trapToSpawn.SetPositionAndRotation(spawnPos, newTile.rotation);
                 trapToSpawn.SetParent(spawnPoint.transform);
             }
         }
     }
-
     void SpawnCoin(Transform newTile)
     {
         var coinSpawnPoints = new List<GameObject>();
@@ -191,7 +189,7 @@ public class TileCreateManager : MonoBehaviour
 
         if (itemSpawnPoints.Count > 0)
         {
-            itemsIndex = Random.Range(0,items.Length);
+            itemsIndex = Random.Range(0, items.Length);
             var spawnPoint = itemSpawnPoints[Random.Range(0, itemSpawnPoints.Count)];
             var spawnPos = spawnPoint.transform.position;
             Transform newItem = itemPool.GetObject(itemsIndex);
@@ -199,12 +197,13 @@ public class TileCreateManager : MonoBehaviour
             newItem.SetParent(spawnPoint.transform);
         }
     }
+
     void FindTrapPos(Transform parent, List<GameObject> obstacleSpawnPoints)
     {
         // 자식 오브젝트들을 모두 확인
         foreach (Transform child in parent)
         {
-            if (child.CompareTag("TrapPos"))
+            if (child.CompareTag("TrapPos") && !obstacleSpawnPoints.Contains(child.gameObject))
             {
                 obstacleSpawnPoints.Add(child.gameObject);
             }
@@ -212,17 +211,18 @@ public class TileCreateManager : MonoBehaviour
             FindTrapPos(child, obstacleSpawnPoints);
         }
     }
-    void FindCoinPos(Transform parent, List<GameObject> obstacleSpawnPoints)
+
+    void FindCoinPos(Transform parent, List<GameObject> coinSpawnPoints)
     {
         // 자식 오브젝트들을 모두 확인
         foreach (Transform child in parent)
         {
-            if (child.CompareTag("CoinPos"))
+            if (child.CompareTag("CoinPos") && !coinSpawnPoints.Contains(child.gameObject))
             {
-                obstacleSpawnPoints.Add(child.gameObject);
+                coinSpawnPoints.Add(child.gameObject);
             }
 
-            FindCoinPos(child, obstacleSpawnPoints);
+            FindCoinPos(child, coinSpawnPoints);
         }
     }
     void FindItemPos(Transform parent, List<GameObject> obstacleSpawnPoints)

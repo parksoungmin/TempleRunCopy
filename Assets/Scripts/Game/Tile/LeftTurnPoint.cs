@@ -8,11 +8,11 @@ public class LeftTurnPoint : MonoBehaviour
     public GameObject closeWall;
     public GameObject closeWall2;
 
-    private void Awake()
+    private void OnEnable()
     {
         closeWall.SetActive(false);
         closeWall2.SetActive(true);
-
+        hasCollided = false;
     }
     public void OnTriggerStay(Collider other)
     {

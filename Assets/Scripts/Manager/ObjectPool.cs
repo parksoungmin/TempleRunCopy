@@ -27,14 +27,13 @@ public class ObjectPool<T> where T : Component
         for (int i = 0; i < prefab.Length; ++i)
         {
             pools[i] = new Queue<T>();
-            for (int j = 0; j < 10; ++j)
-            {
+            
                 this.prefab = prefab[i];
                 this.parent = parent;
                 T obj = GameObject.Instantiate(prefab[i], parent);
                 obj.gameObject.SetActive(false);
                 pools[i].Enqueue(obj);
-            }
+            
         }
     }
     public T GetObject()
