@@ -17090,8 +17090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62adb95b64e44844aa1cca15d92c459f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 2929674911351229998, guid: ccbf376219699e24582fe8059e3da4e1, type: 3}
-  tiles:
+  map: {fileID: 0}
+  maps:
   - {fileID: 1206894562907939571, guid: 3c8a66a7a51cafc409af6216138fe9a8, type: 3}
   - {fileID: 1206894562907939571, guid: 16a20f954655c364783ab78f3efbb6d6, type: 3}
   - {fileID: 1206894562907939571, guid: baec3162310a50449bff924be726a936, type: 3}
@@ -17128,7 +17128,7 @@ MonoBehaviour:
   - {fileID: 2908538169064600819, guid: 722984012b8999a4ca759331412bb63d, type: 3}
   createPoint: {x: 0, y: 0, z: -5}
   startSpawnNum: 20
-  tilesIndex: 0
+  mapsIndex: 0
   coinsIndex: 0
   itemsIndex: 0
 --- !u!4 &1471594805
