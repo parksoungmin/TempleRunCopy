@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileDelete : MonoBehaviour
+public class MapDelete : MonoBehaviour
 {
     public bool active = false;
     private readonly float delayTime = 1.5f;
@@ -22,11 +22,12 @@ public class TileDelete : MonoBehaviour
             currentDelayTime += Time.deltaTime;
             if (delayTime < currentDelayTime)
             {
-                GameObject tileParent = transform.parent.parent.gameObject;
-                TileCreateManager tileCreateManager = GameObject.FindObjectOfType<TileCreateManager>();
+                GameObject MapParent = transform.parent.parent.gameObject;
+                MapCreateManager MapCreateManager = 
+                    GameObject.FindObjectOfType<MapCreateManager>();
 
-                tileCreateManager.ReturnTileToPool(tileParent);
-                tileCreateManager.SpawnNextTile();
+                MapCreateManager.ReturnMapToPool(MapParent); // 타일을 오브젝트풀에 리턴
+                MapCreateManager.SpawnNextTile(); // 다음 타일 생성
             }
 
         }

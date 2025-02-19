@@ -141,12 +141,19 @@ public class MultiTouch : Singleton<MultiTouch>
                     if (touch.phase == TouchPhase.Ended)
                     {
                         float touchDuration = Time.time - touchStartTime;
+                        // 터치 시작 위치와 현재 터치 위치의 차이를 계산하여 이동 벡터(delta) 구하기
                         Vector2 delta = touch.position - touchStartPos;
+
+                        // 이동 거리를 계산 (픽셀 단위)
                         float touchDistance = delta.magnitude;
+
+                        // 이동 거리를 인치 단위로 변환
                         float touchDistanceInches = touchDistance / Screen.dpi;
 
+                        // 터치 지속 시간과 이동 거리가 스와이프 조건을 만족하는지 확인
                         if (touchDuration <= swipeTimeThreshold && touchDistanceInches >= swipeMinDistance)
                         {
+                            // 스와이프 방향을 정규화하여 저장
                             SwipeDirection = delta.normalized;
                         }
                         else if (touchDistance < moveThreshold)

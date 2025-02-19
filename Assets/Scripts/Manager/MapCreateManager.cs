@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-public class TileCreateManager : MonoBehaviour
+public class MapCreateManager : MonoBehaviour
 {
-    public Transform tile;
+    public Transform map;
 
-    public Transform[] tiles;
+    public Transform[] maps;
     public Transform[] traps;
     public Transform[] coins;
     public Transform[] items;
@@ -15,8 +15,8 @@ public class TileCreateManager : MonoBehaviour
 
     public int startSpawnNum = 15;
     private Vector3 nextCreatePoint;
-    private Quaternion nextCreateTileRotation;
-    private int tileCreateCount = 0;
+    private Quaternion nextCreateMapRotation;
+    private int mapCreateCount = 0;
     private int startTrapDontCreateCount = 8;
     private List<int> TileRotation;
 
@@ -24,27 +24,27 @@ public class TileCreateManager : MonoBehaviour
     private float currentItemSpawnTime = 0;
     private bool itemSawpn = false;
 
-    private int tileMaxCount = 10;
+    private int mapMaxCount = 10;
 
     private int safeArray = 2;
 
     private int randomTrapIndex;
 
-    private ObjectPool<Transform> tilePool;
-    private ObjectPool<Transform> sideTilePool;
+    private ObjectPool<Transform> mapPool;
+    private ObjectPool<Transform> sideMapPool;
 
 
-    public int tilesIndex = 0;
+    public int mapsIndex = 0;
     public int coinsIndex = 0;
     public int itemsIndex = 0;
 
     public void Start()
     {
         nextCreatePoint = createPoint;
-        nextCreateTileRotation = Quaternion.identity;
+        nextCreateMapRotation = Quaternion.identity;
 
-        tilePool = new ObjectPool<Transform>(tile, transform, 25);
-        sideTilePool = new ObjectPool<Transform>(tiles, transform);
+        mapPool = new ObjectPool<Transform>(map, transform, 25);
+        sideMapPool = new ObjectPool<Transform>(maps, transform);
         for (int i = 0; i < startSpawnNum; ++i)
         {
             SpawnNextTile();
@@ -63,56 +63,59 @@ public class TileCreateManager : MonoBehaviour
 
     public void SpawnNextTile()
     {
-        ++tileCreateCount;
-        Transform newTile;
+        ++mapCreateCount;
+        Transform newMap;
 
-        if (tileCreateCount > tileMaxCount)
+        if (mapCreateCount > mapMaxCount)
         {
-            tileMaxCount = Random.Range(6, 10);
-            tilesIndex = Random.Range(0, tiles.Length);
-            newTile = sideTilePool.GetObject(tilesIndex);
-            newTile.SetPositionAndRotation(nextCreatePoint, nextCreateTileRotation);
-
-            if (tilesIndex < 11)
+            mapMaxCount = Random.Range(6, 10); // 좌우 회전 맵 생성전 직진맵 개수
+            mapsIndex = Random.Range(0, maps.Length); // 왼쪽 오른쪽 회전 맵 랜덤 생성
+            newMap = sideMapPool.GetObject(mapsIndex); // 오브젝트 풀에서 회전 맵 받아옴
+            newMap.SetPositionAndRotation
+                (nextCreatePoint, nextCreateMapRotation); // 맵 위치 방향 세팅
+            if (mapsIndex < 11)
             {
-                nextCreateTileRotation = Quaternion.Euler(0, nextCreateTileRotation.eulerAngles.y - 90f, 0);
+                nextCreateMapRotation = Quaternion.Euler
+                    (0, nextCreateMapRotation.eulerAngles.y - 90f, 0); // 다음 맵을 -90도 회전 시킴
             }
             else
             {
-                nextCreateTileRotation = Quaternion.Euler(0, nextCreateTileRotation.eulerAngles.y + 90f, 0);
+                nextCreateMapRotation = Quaternion.Euler
+                    (0, nextCreateMapRotation.eulerAngles.y + 90f, 0); // 다음 맵을 90도 회전 시킴
             }
-            tileCreateCount = 0;
+            mapCreateCount = 0;
         }
         else
         {
-            newTile = tilePool.GetObject();
-            newTile.SetPositionAndRotation(nextCreatePoint, nextCreateTileRotation);
+            newMap = mapPool.GetObject(); // 직진 타일 생성
+            newMap.SetPositionAndRotation
+                (nextCreatePoint, nextCreateMapRotation); // 타일 위치 방향 세팅
         }
 
-        if (startTrapDontCreateCount < tileCreateCount)
+        if (startTrapDontCreateCount < mapCreateCount)
         {
             startTrapDontCreateCount = 0;
-            if (tileCreateCount > safeArray)
+            if (mapCreateCount > safeArray)
             {
-                SpawnObstacle(newTile);
-                SpawnCoin(newTile);
+                SpawnObstacle(newMap);
+                SpawnCoin(newMap);
                 if (itemSawpn)
                 {
-                    SpawnItem(newTile);
+                    SpawnItem(newMap);
                 }
             }
         }
 
-        var nextTile = newTile.GetComponentInChildren<EndPosition>().endPos;
-        nextCreatePoint = nextTile.position;
-        nextCreateTileRotation = nextTile.rotation;
+        var nextMap = newMap.GetComponentInChildren<EndPosition>().endPos;
+        nextCreatePoint = nextMap.position;
+        nextCreateMapRotation = nextMap.rotation;
     }
 
-    void SpawnObstacle(Transform newTile)
+    void SpawnObstacle(Transform newMap)
     {
         var obstacleSpawnPoints = new List<GameObject>();
 
-        FindTrapPos(newTile, obstacleSpawnPoints);
+        FindTrapPos(newMap, obstacleSpawnPoints);
 
         if (obstacleSpawnPoints.Count > 0)
         {
@@ -126,8 +129,8 @@ public class TileCreateManager : MonoBehaviour
 
                 var spawnPos = spawnPoint.transform.position;
 
-                Vector3 tileCenter = newTile.position;
-                float relativeX = spawnPos.x - tileCenter.x;
+                Vector3 mapCenter = newMap.position;
+                float relativeX = spawnPos.x - mapCenter.x;
 
                 Transform trapToSpawn = null;
 
@@ -146,16 +149,16 @@ public class TileCreateManager : MonoBehaviour
                     randomTrapIndex = 0;
                     trapToSpawn = traps[Random.Range(0, traps.Length - 1)];
                 }
-                var newObstacle = Instantiate(trapToSpawn, spawnPos, newTile.rotation);
+                var newObstacle = Instantiate(trapToSpawn, spawnPos, newMap.rotation);
                 newObstacle.SetParent(spawnPoint.transform);
             }
         }
     }
-    void SpawnCoin(Transform newTile)
+    void SpawnCoin(Transform newMap)
     {
         var coinSpawnPoints = new List<GameObject>();
 
-        FindCoinPos(newTile, coinSpawnPoints);
+        FindCoinPos(newMap, coinSpawnPoints);
 
         if (coinSpawnPoints.Count > 0)
         {
@@ -169,18 +172,18 @@ public class TileCreateManager : MonoBehaviour
 
                 var spawnPos = spawnPoint.transform.position;
 
-                var newCoin = Instantiate(coins[Random.Range(0, coins.Length)], spawnPos, nextCreateTileRotation);
+                var newCoin = Instantiate(coins[Random.Range(0, coins.Length)], spawnPos, nextCreateMapRotation);
 
                 newCoin.SetParent(spawnPoint.transform);
             }
         }
     }
-    void SpawnItem(Transform newTile)
+    void SpawnItem(Transform newMap)
     {
         itemSawpn = false;
         var itemSpawnPoints = new List<GameObject>();
 
-        FindItemPos(newTile, itemSpawnPoints);
+        FindItemPos(newMap, itemSpawnPoints);
 
         if (itemSpawnPoints.Count > 0)
         {
@@ -194,7 +197,7 @@ public class TileCreateManager : MonoBehaviour
 
             var spawnPos = spawnPoint.transform.position;
 
-            var newCoin = Instantiate(items[Random.Range(0, items.Length)], spawnPos, nextCreateTileRotation);
+            var newCoin = Instantiate(items[Random.Range(0, items.Length)], spawnPos, nextCreateMapRotation);
 
             newCoin.SetParent(spawnPoint.transform);
             //}
@@ -240,13 +243,13 @@ public class TileCreateManager : MonoBehaviour
             FindItemPos(child, obstacleSpawnPoints);
         }
     }
-    public void ReturnTileToPool(GameObject tile)
+    public void ReturnMapToPool(GameObject map)
     {
-        tilePool.ReturnObject(tile.transform);
+        mapPool.ReturnObject(map.transform);
     }
-    public void ReturnTilesToPool(GameObject tile)
+    public void ReturnMapsToPool(GameObject map)
     {
-        sideTilePool.ReturnObject(tile.transform, tilesIndex);
+        sideMapPool.ReturnObject(map.transform, mapsIndex);
     }
 
 }

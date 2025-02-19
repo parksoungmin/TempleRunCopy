@@ -149,7 +149,6 @@ public class Player : MonoBehaviour
             IsJumping = true;
             animator.SetTrigger("Jumping");
             gameObject.GetComponent<AudioSource>().Play();
-
         }
         Vector3 forwardMovement = transform.forward * speed;
 
@@ -194,7 +193,7 @@ public class Player : MonoBehaviour
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         tiltInputX = Input.GetAxis("Horizontal"); // 좌우 이동
 
-        // x축 이동에 대한 벽 감지
+        // x축 이동에 대한 벽 감지 벽과 닿았을 시 true 리턴
         if (tiltInputX > 0 && IsWallDetected(rightDirection))
         {
             tiltInputX = 0;
@@ -217,8 +216,8 @@ public class Player : MonoBehaviour
     }
 #endif
 
-        // 로우 패스 필터 적용 (평균적인 필터링)
-        float smoothingFactor = 0.1f; // 필터의 강도 (0과 1 사이의 값으로 조절, 0은 빠르고, 1은 느림)
+        // 로우 패스 필터 적용
+        float smoothingFactor = 0.1f; // 필터의 강도
         filteredTiltInputX = Mathf.Lerp(filteredTiltInputX, tiltInputX, smoothingFactor);
 
         Vector3 tiltMovement = new Vector3(filteredTiltInputX * tiltSpeed, 0, 0); // z축 이동 제거

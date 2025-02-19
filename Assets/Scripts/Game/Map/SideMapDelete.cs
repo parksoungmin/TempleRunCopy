@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideTileDelete : MonoBehaviour
+public class SideMapDelete : MonoBehaviour
 {
     public bool active = false;
     private readonly float delayTime = 1.5f;
@@ -22,11 +22,11 @@ public class SideTileDelete : MonoBehaviour
             currentDelayTime += Time.deltaTime;
             if (delayTime < currentDelayTime)
             {
-                GameObject tileParent = transform.parent.gameObject;
-                TileCreateManager tileCreateManager = GameObject.FindObjectOfType<TileCreateManager>();
+                GameObject mapParent = transform.parent.gameObject;
+                MapCreateManager mapCreateManager = GameObject.FindObjectOfType<MapCreateManager>();
 
-                tileCreateManager.ReturnTilesToPool(tileParent);
-                tileCreateManager.SpawnNextTile();
+                mapCreateManager.ReturnMapsToPool(mapParent);
+                mapCreateManager.SpawnNextTile();
             }
 
         }
