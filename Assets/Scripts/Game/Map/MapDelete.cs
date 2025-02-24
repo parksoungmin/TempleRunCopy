@@ -27,7 +27,7 @@ public class MapDelete : MonoBehaviour
                     GameObject.FindObjectOfType<MapCreateManager>();
 
                 MapCreateManager.ReturnMapToPool(MapParent); // 타일을 오브젝트풀에 리턴
-                MapCreateManager.SpawnNextTile(); // 다음 타일 생성
+                MapCreateManager.SetingNextTile(); // 다음 타일 세팅
             }
 
         }

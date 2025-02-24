@@ -38,6 +38,9 @@ public class MapCreateManager : MonoBehaviour
     public int coinsIndex = 0;
     public int itemsIndex = 0;
 
+    public int sideMapMinIndex = 6;
+    public int sideMapMaxIndex = 10;
+
     public void Start()
     {
         nextCreatePoint = createPoint;
@@ -47,7 +50,7 @@ public class MapCreateManager : MonoBehaviour
         sideMapPool = new ObjectPool<Transform>(maps, transform);
         for (int i = 0; i < startSpawnNum; ++i)
         {
-            SpawnNextTile();
+            SetingNextTile();
         }
     }
 
@@ -61,19 +64,19 @@ public class MapCreateManager : MonoBehaviour
         }
     }
 
-    public void SpawnNextTile()
+    public void SetingNextTile()
     {
         ++mapCreateCount;
         Transform newMap;
 
         if (mapCreateCount > mapMaxCount)
         {
-            mapMaxCount = Random.Range(6, 10); // 좌우 회전 맵 생성전 직진맵 개수
-            mapsIndex = Random.Range(0, maps.Length); // 왼쪽 오른쪽 회전 맵 랜덤 생성
+            mapMaxCount = Random.Range(sideMapMinIndex, sideMapMaxIndex); // 좌우 회전 맵 생성전 직진맵 개수
+            mapsIndex = Random.Range(0, maps.Length); // 왼쪽 오른쪽 회전 맵 랜덤 인덱스값 생성
             newMap = sideMapPool.GetObject(mapsIndex); // 오브젝트 풀에서 회전 맵 받아옴
             newMap.SetPositionAndRotation
-                (nextCreatePoint, nextCreateMapRotation); // 맵 위치 방향 세팅
-            if (mapsIndex < 11)
+                (nextCreatePoint, nextCreateMapRotation); // 받아온 맵 위치 방향 세팅
+            if (mapsIndex < maps.Length)
             {
                 nextCreateMapRotation = Quaternion.Euler
                     (0, nextCreateMapRotation.eulerAngles.y - 90f, 0); // 다음 맵을 -90도 회전 시킴

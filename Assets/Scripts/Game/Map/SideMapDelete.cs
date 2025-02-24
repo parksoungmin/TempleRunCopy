@@ -26,7 +26,7 @@ public class SideMapDelete : MonoBehaviour
                 MapCreateManager mapCreateManager = GameObject.FindObjectOfType<MapCreateManager>();
 
                 mapCreateManager.ReturnMapsToPool(mapParent);
-                mapCreateManager.SpawnNextTile();
+                mapCreateManager.SetingNextTile();
             }
 
         }
