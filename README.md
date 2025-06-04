@@ -17,4 +17,5 @@ TempleRun 게임을 래퍼런스로 만든 창작 러닝 게임입니다.
 - PC (Windows)
 
 ## 화면 캡쳐
-![화면 캡처 2025-06-04 145616](https://github.com/user-attachments/assets/92aa559a-0017-45f8-a6f9-7e7240c7687f)
+![image1](https://github.com/user-attachments/assets/61715a61-a768-4a73-9941-e4939f2b0156)![image4](https://github.com/user-attachments/assets/976cc152-f565-491d-ba50-4b5b34274148)
+
