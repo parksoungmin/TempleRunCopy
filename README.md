@@ -13,8 +13,8 @@ TempleRun 게임을 래퍼런스로 만든 창작 러닝 게임입니다.
 - **C#**
 
 ## 📱 지원 플랫폼  
-**📱 Android**
-**💻 PC (Windows)**
+- **📱 Android**
+- **💻 PC (Windows)**
 
 ## 🖼️ 화면 캡쳐
 <p align="center">
